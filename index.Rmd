@@ -1,0 +1,470 @@
+---
+title: "Retrieve details about Olympics 2020 medalists via Wikipedia and Wikidata"
+author:
+  - name: Giorgio Comai
+    url: https://giorgiocomai.eu
+    affiliation: OBCT/CCI - EDJNet
+    affiliation_url: https://europeandatajournalism.eu/
+    orcid_id: 0000-0002-0515-9542
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+---
+
+
+## Load packages and set caching folders
+
+This scripts makes use of some of the most common packages for R for data wrangling, scraping, and geocomputation. 
+
+It also makes use of two additional packages created within the scope of EDJNet:
+
+- `tidywikidatar`, for getting data out Wikidata. It's on CRAN, and you can can install it with `install.packages("tidywikidatar")`. Make sure to have at least version 0.4, or download the latest version from GitHub. More info about the package [on its own website](https://edjnet.github.io/tidywikidatar/). 
+- `latlon2map`, for caching locally geographic datasets distributed by the European Union, for some convenience functions for geo-matching, and for interactive exploration of the dataset. You can install it from GitHub - `remotes::install_github("giocomai/latlon2map")`, and find more information about it [on its own website](https://giocomai.github.io/latlon2map/).
+
+
+By default, all data will be cached inside the active folder (likely, your project folder if you have cloned this with the likest of Rstudio). If you intend to use `tidywikidatar` or `latlon2map` in other projects, you may want to set the cache in a shared folder, as suggested in the code commented out below.
+
+```{r load_packages, messages = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library("dplyr") 
+library("rvest")
+library("stringr")
+library("sf")
+library("jsonlite")
+library("purrr")
+
+# remotes::install_github("EDJNet/tidywikidatar")
+library("tidywikidatar")
+tw_enable_cache()
+# tw_set_cache_folder(path = fs::path(fs::path_home_r(), "R", "tw_data"))
+tw_set_language(language = "en")
+tw_create_cache_folder(ask = FALSE)
+
+
+# remotes::install_github("giocomai/latlon2map")
+library("latlon2map")
+# ll_set_folder(path = fs::path(fs::path_home_r(), "R", "ll_data"))
+options(timeout = 60000) # give the time to download the needed datasets
+
+
+```
+
+
+## Getting data out of Wikipedia
+
+We'll be getting all medals from [this Wikipedia page](https://en.wikipedia.org/wiki/List_of_2020_Summer_Olympics_medal_winners). If you cloned this repository, you'll find a version of this page cached locally. If you want to update it, just delete the local `all_medals_wiki.html` and re-download the latest version. 
+
+In this table, each row is a competition, each cell corresponds to one or more medal winners (for team sports).
+
+```{r get_medalist_table_from_wikipedia}
+
+if (fs::file_exists("all_medals_wiki.html")==FALSE) {
+  download.file(url = "https://en.wikipedia.org/wiki/List_of_2020_Summer_Olympics_medal_winners",
+                destfile = "all_medals_wiki.html")
+}
+
+all_medals_page <- read_html(x = "all_medals_wiki.html")
+
+all_medal_tables <- all_medals_page %>% 
+  html_nodes(css = "table")
+
+```
+
+Here I create some functions that I will use to extract data from the table. It's a bit of a pain to extract data consistently, including relevant links, and there are likely easier way to do this, but this seems to work alright. 
+
+I extract separately athletes, and the country they won their medal for, and then pull the data together. 
+
+
+```{r create_extract_from_cell_functions}
+
+o20_get_medalist_from_cell <- function(row,
+                                       td_number) {
+  links <- row %>% 
+    html_nodes("td") %>% 
+    .[[td_number]] %>% 
+    html_nodes("a") %>% 
+    html_attr("href") 
+  
+  if (length(links)==0) {
+    list(links)
+  } else {
+    links[stringr::str_detect(string = links,
+                              pattern = "_at_the_2020_Summer_Olympics",
+                              negate = TRUE)] %>% 
+    list()
+  }
+}
+
+o20_get_country_from_cell <- function(row, td_number) {
+  links <- row %>% 
+    html_nodes("td") %>% 
+    .[[td_number]] %>% 
+    html_nodes("a") %>% 
+    html_attr("href") 
+  
+    if (length(links)==0) {
+    as.character(NA)
+  } else {
+    links[stringr::str_detect(string = links,
+                              pattern = "_at_the_2020_Summer_Olympics",
+                              negate = FALSE)] 
+  }
+}
+
+
+
+o20_get_medals_from_table <- function(table) {
+
+  #print(class(table))
+  table_colnames <- table %>%
+       html_table() %>% 
+       colnames()
+  
+  if (length(table_colnames)!=4) {
+    return(NULL)
+  }
+  
+  if ( table %>%
+       html_table() %>% 
+       colnames() %>% 
+       .[4] != "Bronze") {
+    return(NULL)
+  }
+
+  
+  current_table <- table %>% 
+  html_nodes("tr") %>% 
+    .[-1] #remove header
+  
+  purrr::map_dfr(
+    .x = current_table,
+               .f = function(current_row) {
+                 # print(current_row %>%
+                 #         html_nodes("td") %>%
+                 #         .[[1]] %>%  html_text())
+                 
+                 if (current_row %>% 
+                     html_nodes("td")  %>%
+                     length()!=4) {
+                   return(NULL)
+                 }   
+                 
+                medal_row_df <- tibble::tibble(event_link = current_row %>% 
+                                  html_nodes("td") %>% 
+                                  .[[1]] %>% 
+                                  html_nodes("a") %>% 
+                                  html_attr("href"), 
+                                gold_medalist = current_row %>% 
+                                  o20_get_medalist_from_cell(td_number = 2), 
+                                gold_country = current_row %>% 
+                                  o20_get_country_from_cell(td_number = 2),
+                                  silver_medalist = current_row %>% 
+                                  o20_get_medalist_from_cell(td_number = 3), 
+                                silver_country = current_row %>% 
+                                  o20_get_country_from_cell(td_number = 3),
+                                          bronze_medalist = current_row %>% 
+                                  o20_get_medalist_from_cell(td_number = 4), 
+                                bronze_country = current_row %>% 
+                                  o20_get_country_from_cell(td_number = 4),
+                              ) 
+                 
+                 dplyr::bind_rows(medal_row_df %>% 
+                                    dplyr::transmute(event_link,
+                                                     medal = "gold",
+                                                     medalist_link = gold_medalist,
+                                                     delegation_link = gold_country),
+                                  medal_row_df %>% 
+                                    dplyr::transmute(event_link,
+                                                     medal = "silver",
+                                                     medalist_link = silver_medalist,
+                                                     delegation_link = silver_country),
+                                  medal_row_df %>% 
+                                    dplyr::transmute(event_link,
+                                                     medal = "bronze",
+                                                     medalist_link = bronze_medalist,
+                                                     delegation_link = bronze_country) 
+                                    
+                                  ) %>% 
+                   tidyr::unnest(cols = "medalist_link") %>% 
+                   dplyr::mutate(medalist_link = as.character(medalist_link))
+
+               })
+}
+
+```
+
+Once these functions are defined, then everything looks super-easy. Here's how the data look like at this stage. 
+
+```{r extract tables from local wikipedia page}
+
+all_medalists_df <- purrr::map_dfr(.x = all_medal_tables,
+                                   .f = function(table) {
+                                     o20_get_medals_from_table(table)
+                                   })
+all_medalists_df %>% 
+  dplyr::slice_sample(n = 10) %>% 
+  knitr::kable()
+```
+
+
+So we have links to Wikipedia pages, which is a good start. But Wikipedia does not really have much structured data, so we need to find the Wikidata identifier for each of those Wikipedia pages. We could download the full html of each of those pages and extract the link from there, but we'll play it nicely and use the Wikidata API, and parse the json we obtain from it. 
+
+## Get Wikidata identifiers
+
+So we'll cache locally the json file we get from the Wikipedia page, and and associated to each of those links a Wikidata identifier.
+
+For reference, here's how a random Wikipedia API page looks like:
+
+```{r}
+
+
+fs::dir_create("wikipedia_medalists_json")
+
+
+wiki_api_links <- stringr::str_c("https://en.wikipedia.org/w/api.php?action=query&redirects=true&prop=pageprops&titles=",
+                                            stringr::str_remove(all_medalists_df$medalist_link, "/wiki/"),
+                                               "&format=json")
+
+local_json_files <- fs::path("wikipedia_medalists_json", 
+                        all_medalists_df$medalist_link %>%
+                          fs::path_file() %>%
+                          paste0(., ".json"))
+
+
+sample(wiki_api_links, size = 1)
+```
+
+
+
+```{r}
+
+
+o2020_get_wikidata_from_link <- function(link) {
+  
+  wiki_api_links_country <- stringr::str_c("https://en.wikipedia.org/w/api.php?action=query&redirects=true&prop=pageprops&titles=",
+                                           stringr::str_remove(link, "/wiki/"),
+                                           "&format=json")
+  
+  local_json_files_country <- fs::path("wikipedia_medalists_json", 
+                                       link %>%
+                                         fs::path_file() %>%
+                                         paste0(., ".json"))
+  
+  wikidata_id <- purrr::map2_chr(
+    .x = wiki_api_links_country,
+    .y = local_json_files_country,
+    .f = function(x, y) {
+      
+      if (fs::file_exists(y)==FALSE) {
+        download.file(url = x, destfile = y)
+        Sys.sleep(1)
+      }
+      
+      jsonlite::read_json(path = y)
+      output <- jsonlite::read_json(path = y) %>% 
+        purrr::pluck("query",
+                     "pages",
+                     1,
+                     "pageprops",
+                     "wikibase_item")
+      
+      if (length(output)==0) {
+        as.character(NA)
+      } else {
+        output
+      }
+    })
+  
+  #tibble::tibble(link = link, wikidata_id, wikidata_id)
+  wikidata_id
+  
+}
+
+## check
+# nrow(all_medalists_df)==length(wikidata_id)
+# wiki_api_links[is.na(wikidata_id_medalists)]
+```
+
+I will keep the cached json files in the repo, so you don't have to download them again; the Wikidata identifier should not change anyway. 
+
+
+
+```{r get wikidata id from local json}
+all_medalists_wd_df <- all_medalists_df %>% 
+  dplyr::mutate(medalist_wikidata_id = o2020_get_wikidata_from_link(medalist_link),
+                event_wikidata_id = o2020_get_wikidata_from_link(event_link),
+                delegation_wikidata_id = o2020_get_wikidata_from_link(delegation_link)) 
+
+```
+
+
+```{r}
+all_medalists_wd_df %>% 
+  dplyr::slice_sample(n = 10) %>% 
+  knitr::kable()
+
+```
+
+
+So now we have successfully associated Wikidata identifiers with the relevant Wikipedia pages. Let the Wikidata-based fun begin. 
+
+## Getting the information we need from Wikidata
+
+Now that we have a Wikidata id, we're on a downward slope to get a lot more data without much pain. Look at the beauty of the massive piped call that follows, with each line getting more and more data. 
+
+```{r}
+all_medalists_with_wd_details_df <- all_medalists_wd_df %>% 
+  mutate(medalist_name = tw_get_label(medalist_wikidata_id),
+    place_of_birth_wikidata_id = tw_get_property_same_length(id = medalist_wikidata_id,
+                                                                  p = "P19",
+                                                                  only_first = TRUE), 
+         date_of_birth = tw_get_property_same_length(id = medalist_wikidata_id,
+                                                     p = "P569",
+                                                     only_first = TRUE), 
+         event_name = tw_get_label(event_wikidata_id),
+         delegation_name = tw_get_label(delegation_wikidata_id), 
+         sex_or_gender_wikidata_id = tw_get_property_same_length(id = medalist_wikidata_id,
+                                                                 p = "P21",
+                                                                 only_first = TRUE)) %>% 
+  
+  
+  mutate(country_medal_wikidata_id = tw_get_property_same_length(id = delegation_wikidata_id,
+                                                                 p = "P17",
+                                                                 only_first = TRUE),
+         place_of_birth = tw_get_label(place_of_birth_wikidata_id),
+         place_of_birth_located_in_wikidata_id = tw_get_property_same_length(id = place_of_birth_wikidata_id,
+                                                                             p = "P131",
+                                                                             only_first = TRUE),
+         place_of_birth_coordinates = tw_get_property_same_length(id = place_of_birth_wikidata_id,
+                                                                  p = "P625",
+                                                                  only_first = TRUE),
+         date_of_birth = stringr::str_extract(string = date_of_birth,
+                                              pattern = "[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}") %>% 
+           as.Date(),
+         sex_or_gender = tw_get_label(sex_or_gender_wikidata_id)
+  ) %>% 
+  
+  
+  tidyr::separate(col = place_of_birth_coordinates,
+                  into = c("lat", "lon"),
+                  sep = ",",
+                  remove = FALSE) %>% 
+  
+  
+  mutate(country_medal = tw_get_label(country_medal_wikidata_id),
+         place_of_birth_located_in = tw_get_label(place_of_birth_located_in_wikidata_id))
+
+ 
+```
+
+Now, life's not perfect, and so isn't Wikidata. Some athletes do not have a complete file on them on Wikidata, so we may miss some places of birth, for example. Also, in order to reduce complexity of the output, I have limited retrieval of some properties to the first result. For example, Wikidata knows that a place is located within more than one "administrative territorial entity" (or was at different points in time), but I just kept the first result to keep the data in tabular format and reduce complexity.
+
+To aggregate results consistently at the level of region/province/state, I will rely on geographic datasets and match the coordinates with the place of birth. For the time being, I'll do this only for Europe (all countries which are [part of the NUTS standard](https://ec.europa.eu/eurostat/web/nuts/nuts-maps)). It should be relatively easy to expand to other countries if there's a geographic dataset to do the matching, but this is a start, and data extracted from Wikidata will have to do for the rest of the world for the time being. 
+
+## Geo-matching with NUTS
+
+So let's match the coordinates of the place of birth of each medalist with the geographic dataset of NUTS regions.
+
+```{r}
+
+all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>% 
+  dplyr::left_join(
+    all_medalists_with_wd_details_df %>% 
+      dplyr::filter(is.na(lon)==FALSE) %>% 
+      dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
+      sf::st_as_sf(coords = c("lon","lat"), crs = 4326) %>% 
+      sf::st_join(latlon2map::ll_get_nuts_eu(level = 1),
+                  join = sf::st_intersects) %>% 
+      st_drop_geometry() %>% 
+      dplyr::transmute(medalist_wikidata_id,
+                       nuts1_id = NUTS_ID,
+                       nuts1_name = NAME_LATN),
+    by = "medalist_wikidata_id") %>% 
+    dplyr::left_join(
+    all_medalists_with_wd_details_df %>% 
+      dplyr::filter(is.na(lon)==FALSE) %>% 
+      dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
+      sf::st_as_sf(coords = c("lon","lat"), crs = 4326) %>% 
+      sf::st_join(latlon2map::ll_get_nuts_eu(level = 2),
+                  join = sf::st_intersects) %>% 
+      st_drop_geometry() %>% 
+      dplyr::transmute(medalist_wikidata_id,
+                       nuts2_id = NUTS_ID,
+                       nuts2_name = NAME_LATN),
+    by = "medalist_wikidata_id") %>% 
+    dplyr::left_join(
+    all_medalists_with_wd_details_df %>% 
+      dplyr::filter(is.na(lon)==FALSE) %>% 
+      dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
+      sf::st_as_sf(coords = c("lon","lat"), crs = 4326) %>% 
+      sf::st_join(latlon2map::ll_get_nuts_eu(level = 3),
+                  join = sf::st_intersects) %>% 
+      st_drop_geometry() %>% 
+      dplyr::transmute(medalist_wikidata_id,
+                       nuts3_id = NUTS_ID,
+                       nuts3_name = NAME_LATN),
+    by = "medalist_wikidata_id") %>% 
+  dplyr::select(event_link, 
+                event_wikidata_id,
+                event_name,
+                medal, 
+                medalist_link, 
+                medalist_wikidata_id,
+                medalist_name,
+                delegation_link,
+                delegation_wikidata_id,
+                delegation_name,
+                country_medal_wikidata_id,
+                country_medal,
+                date_of_birth,
+                sex_or_gender_wikidata_id,
+                sex_or_gender,
+                place_of_birth_wikidata_id,
+                place_of_birth,
+                place_of_birth_coordinates,
+                lat,
+                lon,
+                place_of_birth_located_in_wikidata_id,
+                place_of_birth_located_in, 
+                dplyr::everything())
+
+
+
+
+
+```
+
+
+
+## How complete are the results?
+
+Let's check how many missing data we have for each column of data:
+
+```{r}
+
+tibble::tibble(columns = colnames(all_medalists_wd_nuts_df),
+               total = nrow(all_medalists_wd_nuts_df),
+               total_missing = purrr::map_dbl(.x = all_medalists_wd_nuts_df,
+                                              .f = function(x) sum(is.na(x)))) %>% 
+  dplyr::mutate(share_missing = total_missing/total) %>% 
+  mutate(share_missing = scales::percent(x = share_missing)) %>% 
+  knitr::kable()
+
+```
+
+
+The share of missing data for NUTS seems high, but this is expected as non-European medalists are mostly not born within a European NUTS region. Only of handful of European medalists do nothave information on their place of birth.
+
+
+## Get the data
+
+```{r}
+all_medalists_wd_nuts_df %>% 
+  readr::write_csv(file = "all_medalists_wd_nuts.csv")
+```
+
+
+You can download the data [from the repository](https://github.com/EDJNet/olympics2020nuts) including this script, or directly [clicking on this link](all_medalists_wd_nuts.csv).
