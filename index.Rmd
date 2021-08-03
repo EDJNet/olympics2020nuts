@@ -586,6 +586,8 @@ all_medalists_wd_nuts_pop_df <- all_medalists_wd_nuts_df %>%
                 nuts2_name,
                 nuts2_population,
                 nuts2_gdp,
+                nuts3_id,
+                nuts3_name,
                 nuts3_population,
                 nuts3_gdp)
 
