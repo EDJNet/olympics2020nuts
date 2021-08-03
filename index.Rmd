@@ -473,7 +473,11 @@ population_by_nuts2_2020_file <- fs::path("eurostat",
 if (fs::file_exists(population_by_nuts2_2020_file)==FALSE) {
 eurostat::get_eurostat(id = "tgs00096", filters = list(age = "TOTAL",
                                                        sex = "T")) %>% 
-  dplyr::filter(time==as.Date("2020-01-01")) %>% 
+  dplyr::arrange(geo, dplyr::desc(time)) %>% 
+  dplyr::filter(is.na(values)==FALSE) %>% 
+    dplyr::group_by(geo) %>% 
+    dplyr::slice(1) %>% 
+    dplyr::ungroup() %>% 
   tidyr::drop_na() %>% 
   dplyr::transmute(nuts2_id = geo, nuts2_population = values) %>% 
   dplyr::filter(nuts2_population!=0) %>% 
@@ -491,7 +495,11 @@ if (fs::file_exists(population_by_nuts3_2020_file)==FALSE) {
 eurostat::get_eurostat(id = "demo_r_pjanaggr3",
                        filters = list(age = "TOTAL",
                                       sex = "T")) %>% 
-    dplyr::filter(time==as.Date("2020-01-01")) %>% 
+      dplyr::arrange(geo, dplyr::desc(time)) %>% 
+  dplyr::filter(is.na(values)==FALSE) %>% 
+    dplyr::group_by(geo) %>% 
+    dplyr::slice(1) %>% 
+    dplyr::ungroup() %>% 
     tidyr::drop_na() %>% 
     dplyr::transmute(nuts3_id = geo, nuts3_population = values) %>% 
     dplyr::filter(nuts3_population!=0) %>% 
@@ -507,7 +515,11 @@ if (fs::file_exists(fs::path("eurostat",
   
 gdp_by_nuts_df <- eurostat::get_eurostat(id = "nama_10r_3gdp",
                        filters = list(unit = "MIO_EUR"))  %>%
-    dplyr::filter(time==as.Date("2019-01-01")) %>% 
+      dplyr::arrange(geo, dplyr::desc(time)) %>% 
+  dplyr::filter(is.na(values)==FALSE) %>% 
+    dplyr::group_by(geo) %>% 
+    dplyr::slice(1) %>% 
+    dplyr::ungroup() %>% 
     tidyr::drop_na() %>% 
   dplyr::filter(values !=0) 
 
