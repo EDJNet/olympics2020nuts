@@ -31,13 +31,20 @@ You can find the script used to generate this dataset in the file
 `index.Rmd`, or you can look at the [rendered version with
 comments](https://edjnet.github.io/olympics2020nuts/).
 
+For some early results based on this dataset, see:
+
+  - [Ranking European regions by Olympics
+    medals](https://www.europeandatajournalism.eu/eng/News/Data-news/Ranking-European-regions-by-Olympics-medals)
+  - [The data you need to win the Olympics if you go
+    NUTS](https://medium.com/european-data-journalism-network/the-data-you-need-to-win-the-olympics-if-you-go-nuts-6d03b9df34e6)
+
 ## Summary statistics and update status
 
-Total medalists: 1 158 Total medalists with place of birth recorded in
-Wikidata: 956 Total medalists with place of birth recorded in a NUTS
-region: 350
+Total medalists: 1 209 Total medalists with place of birth recorded in
+Wikidata: 1 000 Total medalists with place of birth recorded in a NUTS
+region: 358
 
-Last updated: 2021-08-03 12:12:40
+Last updated: 2021-08-03 16:38:35
 
 ## Credits
 

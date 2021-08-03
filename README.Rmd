@@ -30,7 +30,10 @@ The following files should be of most interest:
 
 You can find the script used to generate this dataset in the file `index.Rmd`, or you can look at the [rendered version with comments](https://edjnet.github.io/olympics2020nuts/).
 
+For some early results based on this dataset, see:
 
+- [Ranking European regions by Olympics medals](https://www.europeandatajournalism.eu/eng/News/Data-news/Ranking-European-regions-by-Olympics-medals)
+- [The data you need to win the Olympics if you go NUTS](https://medium.com/european-data-journalism-network/the-data-you-need-to-win-the-olympics-if-you-go-nuts-6d03b9df34e6)
 
 ## Summary statistics and update status
 
