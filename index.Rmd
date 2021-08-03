@@ -359,6 +359,12 @@ all_medalists_with_wd_details_df <- all_medalists_wd_df %>%
          date_of_birth = tw_get_property_same_length(id = medalist_wikidata_id,
                                                      p = "P569",
                                                      only_first = TRUE), 
+    event_sport_wikidata_id = tw_get_property_same_length(id = event_wikidata_id,
+                                                                  p = "P361",
+                                                                  only_first = TRUE),
+        event_part_of_wikidata_id = tw_get_property_same_length(id = event_wikidata_id,
+                                                                  p = "P641",
+                                                                  only_first = TRUE),
          event_name = tw_get_label(event_wikidata_id),
          delegation_name = tw_get_label(delegation_wikidata_id), 
          sex_or_gender_wikidata_id = tw_get_property_same_length(id = medalist_wikidata_id,
@@ -369,6 +375,8 @@ all_medalists_with_wd_details_df <- all_medalists_wd_df %>%
   mutate(country_medal_wikidata_id = tw_get_property_same_length(id = delegation_wikidata_id,
                                                                  p = "P17",
                                                                  only_first = TRUE),
+         event_sport = tw_get_label(event_sport_wikidata_id),
+         event_part_of = tw_get_label(event_part_of_wikidata_id),
          place_of_birth = tw_get_label(place_of_birth_wikidata_id),
          place_of_birth_located_in_wikidata_id = tw_get_property_same_length(id = place_of_birth_wikidata_id,
                                                                              p = "P131",
@@ -441,10 +449,116 @@ all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>%
       dplyr::transmute(medalist_wikidata_id,
                        nuts3_id = NUTS_ID,
                        nuts3_name = NAME_LATN),
-    by = "medalist_wikidata_id") %>% 
+    by = "medalist_wikidata_id") 
+
+
+
+
+```
+
+## Add population data
+
+https://ec.europa.eu/eurostat/web/products-datasets/product?code=tgs00096
+
+
+
+```{r}
+library("eurostat")
+
+fs::dir_create("eurostat")
+
+population_by_nuts2_2020_file <- fs::path("eurostat",
+                                   "population_by_nuts2_2020.csv")
+
+if (fs::file_exists(population_by_nuts2_2020_file)==FALSE) {
+eurostat::get_eurostat(id = "tgs00096", filters = list(age = "TOTAL",
+                                                       sex = "T")) %>% 
+  dplyr::filter(time==as.Date("2020-01-01")) %>% 
+  tidyr::drop_na() %>% 
+  dplyr::transmute(nuts2_id = geo, nuts2_population = values) %>% 
+  dplyr::filter(nuts2_population!=0) %>% 
+  readr::write_csv(population_by_nuts2_2020_file)
+}
+
+population_by_nuts2 <- readr::read_csv(file = population_by_nuts2_2020_file, show_col_types = FALSE)
+
+
+
+population_by_nuts3_2020_file <- fs::path("eurostat",
+                                   "population_by_nuts3_2020.csv")
+
+if (fs::file_exists(population_by_nuts3_2020_file)==FALSE) {
+eurostat::get_eurostat(id = "demo_r_pjanaggr3",
+                       filters = list(age = "TOTAL",
+                                      sex = "T")) %>% 
+    dplyr::filter(time==as.Date("2020-01-01")) %>% 
+    tidyr::drop_na() %>% 
+    dplyr::transmute(nuts3_id = geo, nuts3_population = values) %>% 
+    dplyr::filter(nuts3_population!=0) %>% 
+    dplyr::filter(nchar(nuts3_id)==5) %>% 
+    readr::write_csv(population_by_nuts3_2020_file)
+}
+
+population_by_nuts3 <- readr::read_csv(file = population_by_nuts3_2020_file, show_col_types = FALSE)
+
+ 
+if (fs::file_exists(fs::path("eurostat",
+                                   "gdp_by_nuts3_2019.csv"))==FALSE) {
+  
+gdp_by_nuts_df <- eurostat::get_eurostat(id = "nama_10r_3gdp",
+                       filters = list(unit = "MIO_EUR"))  %>%
+    dplyr::filter(time==as.Date("2019-01-01")) %>% 
+    tidyr::drop_na() %>% 
+  dplyr::filter(values !=0) 
+
+
+gdp_by_nuts_df %>% 
+  dplyr::transmute(nuts2_id = geo, nuts2_gdp = values) %>% 
+  dplyr::filter(nchar(nuts2_id)==4) %>% 
+  readr::write_csv(file = fs::path("eurostat",
+                                   "gdp_by_nuts2_2019.csv"))
+
+gdp_by_nuts_df %>% 
+  dplyr::transmute(nuts3_id = geo, nuts3_gdp = values) %>% 
+  dplyr::filter(nchar(nuts3_id)==5) %>%
+  readr::write_csv(file = fs::path("eurostat",
+                                   "gdp_by_nuts3_2019.csv"))
+
+
+}
+
+gdp_by_nuts2_2019_df <- readr::read_csv(fs::path("eurostat",
+                                                 "gdp_by_nuts2_2019.csv"),
+                                         show_col_types = FALSE)
+
+gdp_by_nuts3_2019_df <- readr::read_csv(fs::path("eurostat",
+                                                 "gdp_by_nuts3_2019.csv"),
+                                         show_col_types = FALSE)
+ 
+
+
+
+```
+
+
+
+```{r}
+all_medalists_wd_nuts_pop_df <- all_medalists_wd_nuts_df %>% 
+  dplyr::left_join(y = population_by_nuts2, by = "nuts2_id") %>% 
+  dplyr::left_join(y = population_by_nuts3, by = "nuts3_id") %>% 
+  dplyr::left_join(y = gdp_by_nuts2_2019_df, by = "nuts2_id") %>% 
+  dplyr::left_join(y = gdp_by_nuts3_2019_df, by = "nuts3_id") %>% 
+  dplyr::mutate(nuts0_id = stringr::str_extract(string = nuts1_id, pattern = "[A-Z]{2}")) %>% 
+  dplyr::left_join(y = eurostat::ea_countries %>% 
+  dplyr::rename(nuts0_id = code, nuts0_name = name), by = "nuts0_id") %>% 
+  
   dplyr::select(event_link, 
                 event_wikidata_id,
                 event_name,
+                event_sport_wikidata_id,
+                event_sport,
+                event_part_of_wikidata_id,
+                event_part_of,
                 medal, 
                 medalist_link, 
                 medalist_wikidata_id,
@@ -464,11 +578,16 @@ all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>%
                 lon,
                 place_of_birth_located_in_wikidata_id,
                 place_of_birth_located_in, 
-                dplyr::everything())
-
-
-
-
+                nuts0_id,
+                nuts0_name,
+                nuts1_id, 
+                nuts1_name,
+                nuts2_id,
+                nuts2_name,
+                nuts2_population,
+                nuts2_gdp,
+                nuts3_population,
+                nuts3_gdp)
 
 ```
 
@@ -480,9 +599,9 @@ Let's check how many missing data we have for each column of data:
 
 ```{r}
 
-tibble::tibble(columns = colnames(all_medalists_wd_nuts_df),
-               total = nrow(all_medalists_wd_nuts_df),
-               total_missing = purrr::map_dbl(.x = all_medalists_wd_nuts_df,
+tibble::tibble(columns = colnames(all_medalists_wd_nuts_pop_df),
+               total = nrow(all_medalists_wd_nuts_pop_df),
+               total_missing = purrr::map_dbl(.x = all_medalists_wd_nuts_pop_df,
                                               .f = function(x) sum(is.na(x)))) %>% 
   dplyr::mutate(share_missing = total_missing/total) %>% 
   mutate(share_missing = scales::percent(x = share_missing)) %>% 
@@ -494,12 +613,31 @@ tibble::tibble(columns = colnames(all_medalists_wd_nuts_df),
 The share of missing data for NUTS seems high, but this is expected as non-European medalists are mostly not born within a European NUTS region. Only of handful of European medalists do nothave information on their place of birth.
 
 
+
+
+
+
+
 ## Get the data
 
 ```{r}
-all_medalists_wd_nuts_df %>% 
-  readr::write_csv(file = "all_medalists_wd_nuts.csv")
+all_medalists_wd_nuts_pop_df %>% 
+  readr::write_csv(file = "medalists_all.csv")
+
+all_medalists_wd_nuts_pop_df %>%
+  dplyr::filter(is.na(nuts0_id)==FALSE) %>% 
+  readr::write_csv(file = "medalists_nuts_only.csv")
+
+all_medalists_wd_nuts_pop_df %>%
+  dplyr::filter(is.na(place_of_birth_wikidata_id)==TRUE) %>% 
+  dplyr::select(event_name, medal, medalist_name, medalist_wikidata_id, delegation_name, sex_or_gender) %>% 
+  readr::write_csv(file = "medalists_missing_place_of_birth.csv")
 ```
 
 
-You can download the data [from the repository](https://github.com/EDJNet/olympics2020nuts) including this script, or directly [clicking on this link](all_medalists_wd_nuts.csv).
+You can download the dataset [from the repository](https://github.com/EDJNet/olympics2020nuts) including this script, or directly [clicking on this link](medalists_all.csv).
+
+Here is the datasets for [only medalists with place of birth in a NUTS region](medalists_nuts_only.csv).
+
+
+Here is the datasets for [only medalists with no known place of birth in Wikidata](medalists_missing_place_of_birth.csv) (a good starting place to contribute to Wikidata).
