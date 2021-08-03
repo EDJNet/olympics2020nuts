@@ -543,14 +543,16 @@ gdp_by_nuts3_2019_df <- readr::read_csv(fs::path("eurostat",
 
 
 ```{r}
+
 all_medalists_wd_nuts_pop_df <- all_medalists_wd_nuts_df %>% 
   dplyr::left_join(y = population_by_nuts2, by = "nuts2_id") %>% 
   dplyr::left_join(y = population_by_nuts3, by = "nuts3_id") %>% 
   dplyr::left_join(y = gdp_by_nuts2_2019_df, by = "nuts2_id") %>% 
   dplyr::left_join(y = gdp_by_nuts3_2019_df, by = "nuts3_id") %>% 
-  dplyr::mutate(nuts0_id = stringr::str_extract(string = nuts1_id, pattern = "[A-Z]{2}")) %>% 
-  dplyr::left_join(y = eurostat::ea_countries %>% 
-  dplyr::rename(nuts0_id = code, nuts0_name = name), by = "nuts0_id") %>% 
+  dplyr::mutate(nuts0_id = stringr::str_extract(string = nuts2_id, pattern = "[A-Z]{2}")) %>% 
+  dplyr::mutate(nuts0_name = countrycode::countrycode(sourcevar = nuts0_id,
+                                                      origin = "iso2c",
+                                                      destination = "country.name")) %>% 
   
   dplyr::select(event_link, 
                 event_wikidata_id,
