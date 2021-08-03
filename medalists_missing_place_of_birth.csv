@@ -9,6 +9,7 @@ archery at the 2020 Summer Olympics – Mixed team,gold,An San,Q107618974,South 
 archery at the 2020 Summer Olympics – Mixed team,silver,Steve Wijler,Q42361303,Netherlands,Netherlands at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's discus throw,silver,Simon Pettersson,Q34998110,Sweden,Sweden at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – women's 5000 metres,bronze,Gudaf Tsegay,Q16224285,Ethiopia,Ethiopia at the 2020 Summer Olympics,female
+athletics at the 2020 Summer Olympics – women's hammer throw,silver,Wang Zheng,Q1401520,People's Republic of China,China at the 2020 Summer Olympics,NA
 athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,gold,Natalia Kaczmarek,Q50330750,Poland,Poland at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,silver,Anabel Medina,Q106686904,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,bronze,Trevor Stewart,Q107302664,United States of America,United States at the 2020 Summer Olympics,male
@@ -16,6 +17,7 @@ athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,bronze,Kay
 Basketball at the 2020 Summer Olympics – Men's 3x3 tournament,silver,Ilia Karpenkov,Q107638985,NA,ROC at the 2020 Summer Olympics,male
 Basketball at the 2020 Summer Olympics – Men's 3x3 tournament,silver,Kirill Pisklov,Q107638980,NA,ROC at the 2020 Summer Olympics,male
 Basketball at the 2020 Summer Olympics – Men's 3x3 tournament,silver,Stanislav Sharov,Q107638978,NA,ROC at the 2020 Summer Olympics,male
+boxing at the 2020 Summer Olympics – men's featherweight,bronze,Samuel Takyi,Q107675127,Ghana,Ghana at the 2020 Summer Olympics,male
 canoeing at the 2020 Summer Olympics – men's C-2 1000 metres,silver,Zheng Pengfei,Q107802143,People's Republic of China,China at the 2020 Summer Olympics,male
 canoeing at the 2020 Summer Olympics – men's C-2 1000 metres,bronze,Tim Hecker,Q66749145,Germany,Germany at the 2020 Summer Olympics,male
 canoeing at the 2020 Summer Olympics – men's K-1 1000 metres,silver,Ádám Varga,Q107774017,Hungary,Hungary at the 2020 Summer Olympics,male
@@ -33,7 +35,7 @@ equestrian at the 2020 Summer Olympics – individual dressage,gold,Jessica von 
 equestrian at the 2020 Summer Olympics – team dressage,gold,Jessica von Bredow-Werndl,Q16752978,Germany,Germany at the 2020 Summer Olympics,female
 equestrian at the 2020 Summer Olympics – team dressage,silver,Sabine Schut-Kery,Q107278143,United States of America,United States at the 2020 Summer Olympics,female
 equestrian at the 2020 Summer Olympics – team dressage,bronze,Charlotte Fry,Q107264573,United Kingdom,Great Britain at the 2020 Summer Olympics,female
-equestrian at the 2020 Summer Olympics – individual eventing,silver,Tom McEwen,Q7816795,United Kingdom,Great Britain at the 2020 Summer Olympics,NA
+equestrian at the 2020 Summer Olympics – individual eventing,silver,Tom McEwen,Q107392183,United Kingdom,Great Britain at the 2020 Summer Olympics,male
 equestrian at the 2020 Summer Olympics – team eventing,gold,Laura Collett,Q107571009,United Kingdom,Great Britain at the 2020 Summer Olympics,female
 equestrian at the 2020 Summer Olympics – team eventing,gold,Tom McEwen,Q107392183,United Kingdom,Great Britain at the 2020 Summer Olympics,male
 equestrian at the 2020 Summer Olympics – team eventing,gold,Oliver Townend,Q63431878,United Kingdom,Great Britain at the 2020 Summer Olympics,male
@@ -197,3 +199,8 @@ weightlifting at the 2020 Summer Olympics – women's 64 kg,bronze,Chen Wen-Huei
 weightlifting at the 2020 Summer Olympics – women's 87 kg,silver,Tamara Salazar,Q58364818,Ecuador,Ecuador at the 2020 Summer Olympics,female
 wrestling at the 2020 Summer Olympics – men's Greco-Roman 60 kg,gold,Luis Orta,Q56329558,Cuba,Cuba at the 2020 Summer Olympics,male
 wrestling at the 2020 Summer Olympics – men's Greco-Roman 60 kg,bronze,Walihan Sailike,Q57835242,People's Republic of China,China at the 2020 Summer Olympics,male
+wrestling at the 2020 Summer Olympics – men's Greco-Roman 77 kg,bronze,Shohei Yabiku,Q107803123,Japan,Japan at the 2020 Summer Olympics,male
+wrestling at the 2020 Summer Olympics – men's Greco-Roman 97 kg,bronze,Tadeusz Michalik,Q23668303,Poland,Poland at the 2020 Summer Olympics,male
+boxing at the 2020 Summer Olympics – women's featherweight,bronze,Karriss Artingstall,Q70703343,United Kingdom,Great Britain at the 2020 Summer Olympics,female
+taekwondo at the 2020 Summer Olympics – men's 80 kg,bronze,Seif Eissa,Q18043783,Egypt,Egypt at the 2020 Summer Olympics,male
+wrestling at the 2020 Summer Olympics – women's freestyle 76 kg,bronze,Zhou Qian,Q18208566,People's Republic of China,China at the 2020 Summer Olympics,female

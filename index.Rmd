@@ -20,7 +20,7 @@ This scripts makes use of some of the most common packages for R for data wrangl
 
 It also makes use of two additional packages created within the scope of EDJNet:
 
-- `tidywikidatar`, for getting data out Wikidata. It's on CRAN, and you can can install it with `install.packages("tidywikidatar")`. Make sure to have at least version 0.4, or download the latest version from GitHub. More info about the package [on its own website](https://edjnet.github.io/tidywikidatar/). 
+- `tidywikidatar`, for getting data out Wikidata. It's on CRAN, and you can can install it with `install.packages("tidywikidatar")`. Make sure to have at least version 0.4.1 (it should be on CRAN soon), or download the latest version from GitHub. More info about the package [on its own website](https://edjnet.github.io/tidywikidatar/). 
 - `latlon2map`, for caching locally geographic datasets distributed by the European Union, for some convenience functions for geo-matching, and for interactive exploration of the dataset. You can install it from GitHub - `remotes::install_github("giocomai/latlon2map")`, and find more information about it [on its own website](https://giocomai.github.io/latlon2map/).
 
 
@@ -237,6 +237,33 @@ all_medalists_df <- purrr::map_dfr(.x = all_medal_tables,
                                    .f = function(table) {
                                      o20_get_medals_from_table(table)
                                    })
+
+
+all_medalists_df$medalist_link[all_medalists_df$medalist_link == "/wiki/Gianmarco_Tamberi"&all_medalists_df$delegation_link=="/wiki/Qatar_at_the_2020_Summer_Olympics"] <- "/wiki/Mutaz_Essa_Barshim"
+
+
+## add manually bronze medals shared by two athletes... less than ideal, but not in the modd to fix the parser now
+
+double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegation_link,
+                "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Karriss_Artingstall", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_58_kg", "bronze", "/wiki/Mikhail_Artamonov_(taekwondo)", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_68_kg", "bronze", "/wiki/Zhao_Shuai", "/wiki/China_at_the_2020_Summer_Olympics",
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_80_kg", "bronze", "/wiki/Seif_Eissa", "/wiki/Egypt_at_the_2020_Summer_Olympics",
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B80_kg", "bronze", "/wiki/Rafael_Alba", "/wiki/Cuba_at_the_2020_Summer_Olympics",
+                
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_49_kg", "bronze", "/wiki/Avishag_Semberg", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_57_kg", "bronze", "/wiki/Hatice_K%C3%BCbra_%C4%B0lg%C3%BCn", "/wiki/Turkey_at_the_2020_Summer_Olympics",
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_67_kg", "bronze", "/wiki/Hedaya_Wahba", "/wiki/Egypt_at_the_2020_Summer_Olympics",
+                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B67_kg", "bronze", "/wiki/Bianca_Walkden", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                
+                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_60_kg", "bronze", "/wiki/Sergey_Emelin", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_130_kg", "bronze", "/wiki/Sergey_Semenov_(wrestler)", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg", "bronze", "/wiki/Zhou_Qian", "/wiki/China_at_the_2020_Summer_Olympics"
+                )
+
+all_medalists_df <- bind_rows(all_medalists_df,
+                              double_medals)
 
 
 all_medalists_df %>% 
@@ -654,7 +681,9 @@ all_medalists_wd_nuts_pop_df %>%
 
 You can download the dataset [from the repository](https://github.com/EDJNet/olympics2020nuts) including this script, or directly [clicking on this link](medalists_all.csv).
 
-Here is the datasets for [only medalists with place of birth in a NUTS region](medalists_nuts_only.csv).
+Here is the dataset for [only medalists with place of birth in a NUTS region](medalists_nuts_only.csv).
 
 
-Here is the datasets for [only medalists with no known place of birth in Wikidata](medalists_missing_place_of_birth.csv) (a good starting place to contribute to Wikidata).
+Here is the dataset for [only medalists with no known place of birth in Wikidata](medalists_missing_place_of_birth.csv) (a good starting place to contribute to Wikidata).
+
+See [this blog post introducing the dataset](https://medium.com/european-data-journalism-network/the-data-you-need-to-win-the-olympics-if-you-go-nuts-6d03b9df34e6), with some preliminary results about which NUTS 2 got more medals.
