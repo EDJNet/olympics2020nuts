@@ -419,7 +419,7 @@ all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>%
       dplyr::filter(is.na(lon)==FALSE) %>% 
       dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
       sf::st_as_sf(coords = c("lon","lat"), crs = 4326) %>% 
-      sf::st_join(latlon2map::ll_get_nuts_eu(level = 1),
+      sf::st_join(latlon2map::ll_get_nuts_eu(level = 1, year = 2016),
                   join = sf::st_intersects) %>% 
       st_drop_geometry() %>% 
       dplyr::transmute(medalist_wikidata_id,
@@ -431,7 +431,7 @@ all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>%
       dplyr::filter(is.na(lon)==FALSE) %>% 
       dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
       sf::st_as_sf(coords = c("lon","lat"), crs = 4326) %>% 
-      sf::st_join(latlon2map::ll_get_nuts_eu(level = 2),
+      sf::st_join(latlon2map::ll_get_nuts_eu(level = 2, year = 2016),
                   join = sf::st_intersects) %>% 
       st_drop_geometry() %>% 
       dplyr::transmute(medalist_wikidata_id,
@@ -443,7 +443,7 @@ all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>%
       dplyr::filter(is.na(lon)==FALSE) %>% 
       dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
       sf::st_as_sf(coords = c("lon","lat"), crs = 4326) %>% 
-      sf::st_join(latlon2map::ll_get_nuts_eu(level = 3),
+      sf::st_join(latlon2map::ll_get_nuts_eu(level = 3, year = 2016),
                   join = sf::st_intersects) %>% 
       st_drop_geometry() %>% 
       dplyr::transmute(medalist_wikidata_id,
@@ -607,6 +607,8 @@ all_medalists_wd_nuts_pop_df <- all_medalists_wd_nuts_df %>%
                 nuts3_population,
                 nuts3_gdp)
 
+
+
 ```
 
 
@@ -629,9 +631,6 @@ tibble::tibble(columns = colnames(all_medalists_wd_nuts_pop_df),
 
 
 The share of missing data for NUTS seems high, but this is expected as non-European medalists are mostly not born within a European NUTS region. Only of handful of European medalists do nothave information on their place of birth.
-
-
-
 
 
 
