@@ -94,7 +94,7 @@ o20_get_medalist_from_cell <- function(row,
     links[stringr::str_detect(string = links,
                               pattern = "_at_the_2020_Summer_Olympics",
                               negate = TRUE)] %>% 
-    list()
+      list()
   }
 }
 
@@ -105,7 +105,7 @@ o20_get_country_from_cell <- function(row, td_number) {
     html_nodes("a") %>% 
     html_attr("href") 
   
-    if (length(links)==0) {
+  if (length(links)==0) {
     as.character(NA)
   } else {
     links[stringr::str_detect(string = links,
@@ -117,81 +117,114 @@ o20_get_country_from_cell <- function(row, td_number) {
 
 
 o20_get_medals_from_table <- function(table) {
-
+  
   #print(class(table))
   table_colnames <- table %>%
-       html_table() %>% 
-       colnames()
+    html_table() %>% 
+    colnames()
   
-  if (length(table_colnames)!=4) {
+  if (!(length(table_colnames)==4|length(table_colnames)==7)) {
     return(NULL)
   }
   
-  if ( table %>%
-       html_table() %>% 
-       colnames() %>% 
-       .[4] != "Bronze") {
+  col4 <- table %>%
+    html_table() %>% 
+    colnames() %>% 
+    .[4]
+  
+  if (col4 != "Bronze" & col4 != "Silver") {
     return(NULL)
   }
-
+  
   
   current_table <- table %>% 
-  html_nodes("tr") %>% 
+    html_nodes("tr") %>% 
     .[-1] #remove header
   
   purrr::map_dfr(
     .x = current_table,
-               .f = function(current_row) {
-                 # print(current_row %>%
-                 #         html_nodes("td") %>%
-                 #         .[[1]] %>%  html_text())
-                 
-                 if (current_row %>% 
-                     html_nodes("td")  %>%
-                     length()!=4) {
-                   return(NULL)
-                 }   
-                 
-                medal_row_df <- tibble::tibble(event_link = current_row %>% 
-                                  html_nodes("td") %>% 
-                                  .[[1]] %>% 
-                                  html_nodes("a") %>% 
-                                  html_attr("href"), 
-                                gold_medalist = current_row %>% 
-                                  o20_get_medalist_from_cell(td_number = 2), 
-                                gold_country = current_row %>% 
-                                  o20_get_country_from_cell(td_number = 2),
-                                  silver_medalist = current_row %>% 
-                                  o20_get_medalist_from_cell(td_number = 3), 
-                                silver_country = current_row %>% 
-                                  o20_get_country_from_cell(td_number = 3),
-                                          bronze_medalist = current_row %>% 
-                                  o20_get_medalist_from_cell(td_number = 4), 
-                                bronze_country = current_row %>% 
-                                  o20_get_country_from_cell(td_number = 4),
-                              ) 
-                 
-                 dplyr::bind_rows(medal_row_df %>% 
-                                    dplyr::transmute(event_link,
-                                                     medal = "gold",
-                                                     medalist_link = gold_medalist,
-                                                     delegation_link = gold_country),
-                                  medal_row_df %>% 
-                                    dplyr::transmute(event_link,
-                                                     medal = "silver",
-                                                     medalist_link = silver_medalist,
-                                                     delegation_link = silver_country),
-                                  medal_row_df %>% 
-                                    dplyr::transmute(event_link,
-                                                     medal = "bronze",
-                                                     medalist_link = bronze_medalist,
-                                                     delegation_link = bronze_country) 
-                                    
-                                  ) %>% 
-                   tidyr::unnest(cols = "medalist_link") %>% 
-                   dplyr::mutate(medalist_link = as.character(medalist_link))
-
-               })
+    .f = function(current_row) {
+      # print(current_row %>%
+      #         html_nodes("td") %>%
+      #         .[[1]] %>%  html_text())
+      
+      col_number <- current_row %>% 
+        html_nodes("td") %>% 
+        length()
+      
+      
+      if (col_number==4) {
+        
+        
+        medal_row_df <- tibble::tibble(event_link = current_row %>% 
+                                         html_nodes("td") %>% 
+                                         .[[1]] %>% 
+                                         html_nodes("a") %>% 
+                                         html_attr("href"), 
+                                       gold_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 2), 
+                                       gold_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 2),
+                                       silver_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 3), 
+                                       silver_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 3),
+                                       bronze_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 4), 
+                                       bronze_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 4),
+        ) 
+      } else if (col_number==7) {
+        
+        
+        medal_row_df <- tibble::tibble(event_link = current_row %>% 
+                                         html_nodes("td") %>% 
+                                         .[[1]] %>% 
+                                         html_nodes("a") %>% 
+                                         html_attr("href"), 
+                                       gold_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 2), 
+                                       gold_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 2),
+                                       silver_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 4), 
+                                       silver_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 4),
+                                       bronze_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 6), 
+                                       bronze_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 6),
+        ) 
+      } else {
+        return(NULL)
+      }
+      
+      
+      
+      dplyr::bind_rows(medal_row_df %>% 
+                         dplyr::transmute(event_link,
+                                          medal = "gold",
+                                          medalist_link = gold_medalist,
+                                          delegation_link = gold_country),
+                       medal_row_df %>% 
+                         dplyr::transmute(event_link,
+                                          medal = "silver",
+                                          medalist_link = silver_medalist,
+                                          delegation_link = silver_country),
+                       medal_row_df %>% 
+                         dplyr::transmute(event_link,
+                                          medal = "bronze",
+                                          medalist_link = bronze_medalist,
+                                          delegation_link = bronze_country) 
+                       
+      ) %>% 
+        tidyr::unnest(cols = "medalist_link") %>% 
+        dplyr::mutate(medalist_link = as.character(medalist_link)) %>% 
+        dplyr::filter(stringr::str_detect(string = medalist_link,
+                                          pattern =  "#endnote",
+                                          negate = TRUE))
+      
+    })
 }
 
 ```
@@ -204,6 +237,8 @@ all_medalists_df <- purrr::map_dfr(.x = all_medal_tables,
                                    .f = function(table) {
                                      o20_get_medals_from_table(table)
                                    })
+
+
 all_medalists_df %>% 
   dplyr::slice_sample(n = 10) %>% 
   knitr::kable()
