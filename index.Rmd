@@ -630,7 +630,7 @@ all_medalists_wd_nuts_pop_df %>%
 
 all_medalists_wd_nuts_pop_df %>%
   dplyr::filter(is.na(place_of_birth_wikidata_id)==TRUE) %>% 
-  dplyr::select(event_name, medal, medalist_name, medalist_wikidata_id, delegation_name, sex_or_gender) %>% 
+  dplyr::select(event_name, medal, medalist_name, medalist_wikidata_id, country_medal, delegation_name, sex_or_gender) %>% 
   readr::write_csv(file = "medalists_missing_place_of_birth.csv")
 ```
 
