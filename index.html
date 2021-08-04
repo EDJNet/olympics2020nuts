@@ -90,8 +90,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-08-03" />
-  <meta property="article:created" itemprop="dateCreated" content="2021-08-03" />
+  <meta property="article:published" itemprop="datePublished" content="2021-08-04" />
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-04" />
   <meta name="article:author" content="Giorgio Comai" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -107,7 +107,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Retrieve details about Olympics 2020 medalists via Wikipedia and Wikidata"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Giorgio Comai"]},{"type":"character","attributes":{},"value":["https://giorgiocomai.eu"]},{"type":"character","attributes":{},"value":["OBCT/CCI - EDJNet"]},{"type":"character","attributes":{},"value":["https://europeandatajournalism.eu/"]},{"type":"character","attributes":{},"value":["0000-0002-0515-9542"]}]}]},{"type":"character","attributes":{},"value":["2021-08-03"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Retrieve details about Olympics 2020 medalists via Wikipedia and Wikidata"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Giorgio Comai"]},{"type":"character","attributes":{},"value":["https://giorgiocomai.eu"]},{"type":"character","attributes":{},"value":["OBCT/CCI - EDJNet"]},{"type":"character","attributes":{},"value":["https://europeandatajournalism.eu/"]},{"type":"character","attributes":{},"value":["0000-0002-0515-9542"]}]}]},{"type":"character","attributes":{},"value":["2021-08-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2469,7 +2469,7 @@ distill-header .nav a {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Retrieve details about Olympics 2020 medalists via Wikipedia and Wikidata","authors":[{"author":"Giorgio Comai","authorURL":"https://giorgiocomai.eu","affiliation":"OBCT/CCI - EDJNet","affiliationURL":"https://europeandatajournalism.eu/","orcidID":"0000-0002-0515-9542"}],"publishedDate":"2021-08-03T00:00:00.000+02:00","citationText":"Comai, 2021"}
+{"title":"Retrieve details about Olympics 2020 medalists via Wikipedia and Wikidata","authors":[{"author":"Giorgio Comai","authorURL":"https://giorgiocomai.eu","affiliation":"OBCT/CCI - EDJNet","affiliationURL":"https://europeandatajournalism.eu/","orcidID":"0000-0002-0515-9542"}],"publishedDate":"2021-08-04T00:00:00.000+02:00","citationText":"Comai, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2488,7 +2488,7 @@ distill-header .nav a {
 <div class="d-byline">
   Giorgio Comai <a href="https://giorgiocomai.eu" class="uri">https://giorgiocomai.eu</a> (OBCT/CCI - EDJNet)<a href="https://europeandatajournalism.eu/" class="uri">https://europeandatajournalism.eu/</a>
   
-<br />2021-08-03
+<br />2021-08-04
 </div>
 
 <div class="d-article">
@@ -2675,7 +2675,7 @@ distill-header .nav a {
                                        bronze_medalist <span class="op">=</span> <span class="va">current_row</span> <span class="op">%&gt;%</span> 
                                          <span class="fu">o20_get_medalist_from_cell</span><span class="op">(</span>td_number <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>, 
                                        bronze_country <span class="op">=</span> <span class="va">current_row</span> <span class="op">%&gt;%</span> 
-                                         <span class="fu">o20_get_country_from_cell</span><span class="op">(</span>td_number <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>,
+                                         <span class="fu">o20_get_country_from_cell</span><span class="op">(</span>td_number <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>
         <span class="op">)</span> 
       <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
         <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
@@ -2714,13 +2714,14 @@ distill-header .nav a {
 <p>Once these functions are defined, then everything looks super-easy. Here’s how the data look like at this stage.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">all_medalists_df</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">all_medal_tables</span>,
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">all_medalists_df_pre</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">all_medal_tables</span>,
                                    .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">table</span><span class="op">)</span> <span class="op">{</span>
                                      <span class="fu">o20_get_medals_from_table</span><span class="op">(</span><span class="va">table</span><span class="op">)</span>
                                    <span class="op">}</span><span class="op">)</span>
 
+<span class="va">all_medalists_df_pre</span><span class="op">$</span><span class="va">medalist_link</span><span class="op">[</span><span class="va">all_medalists_df_pre</span><span class="op">$</span><span class="va">medalist_link</span> <span class="op">==</span> <span class="st">&quot;/wiki/Gianmarco_Tamberi&quot;</span><span class="op">&amp;</span><span class="va">all_medalists_df_pre</span><span class="op">$</span><span class="va">delegation_link</span><span class="op">==</span><span class="st">&quot;/wiki/Qatar_at_the_2020_Summer_Olympics&quot;</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">&quot;/wiki/Mutaz_Essa_Barshim&quot;</span>
 
-<span class="va">all_medalists_df</span><span class="op">$</span><span class="va">medalist_link</span><span class="op">[</span><span class="va">all_medalists_df</span><span class="op">$</span><span class="va">medalist_link</span> <span class="op">==</span> <span class="st">&quot;/wiki/Gianmarco_Tamberi&quot;</span><span class="op">&amp;</span><span class="va">all_medalists_df</span><span class="op">$</span><span class="va">delegation_link</span><span class="op">==</span><span class="st">&quot;/wiki/Qatar_at_the_2020_Summer_Olympics&quot;</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">&quot;/wiki/Mutaz_Essa_Barshim&quot;</span>
+<span class="va">all_medalists_df_pre</span><span class="op">$</span><span class="va">medalist_link</span><span class="op">[</span><span class="va">all_medalists_df_pre</span><span class="op">$</span><span class="va">medalist_link</span> <span class="op">==</span> <span class="st">&quot;/wiki/Mutaz_Essa_Barshim&quot;</span><span class="op">&amp;</span><span class="va">all_medalists_df_pre</span><span class="op">$</span><span class="va">delegation_link</span><span class="op">==</span><span class="st">&quot;/wiki/Italy_at_the_2020_Summer_Olympics&quot;</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">&quot;/wiki/Gianmarco_Tamberi&quot;</span>
 
 
 <span class="co">## add manually bronze medals shared by two athletes... less than ideal, but not in the modd to fix the parser now</span>
@@ -2743,8 +2744,20 @@ distill-header .nav a {
                 <span class="st">&quot;/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg&quot;</span>, <span class="st">&quot;bronze&quot;</span>, <span class="st">&quot;/wiki/Zhou_Qian&quot;</span>, <span class="st">&quot;/wiki/China_at_the_2020_Summer_Olympics&quot;</span>
                 <span class="op">)</span>
 
-<span class="va">all_medalists_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">all_medalists_df</span>,
-                              <span class="va">double_medals</span><span class="op">)</span>
+<span class="va">all_medalists_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">all_medalists_df_pre</span>,
+                              <span class="va">double_medals</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">event_link</span>, <span class="va">medalist_link</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+
+<span class="co">####  check: </span>
+<span class="co"># dplyr::group_by(event_link, medalist_link) %&gt;% </span>
+<span class="co"># count() %&gt;% </span>
+<span class="co"># dplyr::filter(n&gt;1)</span>
+
+<span class="co"># nrow(all_medalists_df_pre)+nrow(double_medals)</span>
+
+
+ 
 
 
 <span class="va">all_medalists_df</span> <span class="op">%&gt;%</span> 
@@ -2752,12 +2765,12 @@ distill-header .nav a {
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span>
 </code></pre>
 </div>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 49%"></col>
-<col style="width: 4%"></col>
+<col style="width: 53%"></col>
+<col style="width: 3%"></col>
 <col style="width: 16%"></col>
-<col style="width: 29%"></col>
+<col style="width: 26%"></col>
 </colgroup>
 <thead>
 <tr class="header">
@@ -2769,64 +2782,64 @@ distill-header .nav a {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">/wiki/Fencing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_team_foil</td>
+<td style="text-align: left;">/wiki/Rugby_sevens_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_tournament</td>
 <td style="text-align: left;">bronze</td>
-<td style="text-align: left;">/wiki/Alexander_Massialas</td>
-<td style="text-align: left;">/wiki/United_States_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">/wiki/Felipe_del_Mestre</td>
+<td style="text-align: left;">/wiki/Argentina_at_the_2020_Summer_Olympics</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">/wiki/Fencing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_team_%C3%A9p%C3%A9e</td>
+<td style="text-align: left;">/wiki/Rugby_sevens_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_tournament</td>
 <td style="text-align: left;">gold</td>
-<td style="text-align: left;">/wiki/Kazuyasu_Minobe</td>
-<td style="text-align: left;">/wiki/Japan_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">/wiki/Napolioni_Bolaca</td>
+<td style="text-align: left;">/wiki/Fiji_at_the_2020_Summer_Olympics</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">/wiki/Fencing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_team_sabre</td>
+<td style="text-align: left;">/wiki/Swimming_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_4_%C3%97_100_metre_medley_relay</td>
 <td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Luca_Curatoli</td>
-<td style="text-align: left;">/wiki/Italy_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">/wiki/James_Wilby</td>
+<td style="text-align: left;">/wiki/Great_Britain_at_the_2020_Summer_Olympics</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B100_kg</td>
+<td style="text-align: left;">/wiki/Swimming_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_4_%C3%97_100_metre_freestyle_relay</td>
 <td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Guram_Tushishvili</td>
-<td style="text-align: left;">/wiki/Georgia_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">/wiki/Rebecca_Smith_(swimmer)</td>
+<td style="text-align: left;">/wiki/Canada_at_the_2020_Summer_Olympics</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_coxless_four</td>
-<td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Mugurel_Semciuc</td>
-<td style="text-align: left;">/wiki/Romania_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">/wiki/Triathlon_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_relay</td>
+<td style="text-align: left;">bronze</td>
+<td style="text-align: left;">/wiki/Dorian_Coninx</td>
+<td style="text-align: left;">/wiki/France_at_the_2020_Summer_Olympics</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_eight</td>
-<td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Olaf_Roggensack</td>
-<td style="text-align: left;">/wiki/Germany_at_the_2020_Summer_Olympics</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">/wiki/Basketball_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_3x3_tournament</td>
-<td style="text-align: left;">gold</td>
-<td style="text-align: left;">/wiki/Agnis_%C4%8Cavars</td>
-<td style="text-align: left;">/wiki/Latvia_at_the_2020_Summer_Olympics</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">/wiki/Cycling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_road_time_trial</td>
-<td style="text-align: left;">gold</td>
-<td style="text-align: left;">/wiki/Annemiek_van_Vleuten</td>
+<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_double_sculls</td>
+<td style="text-align: left;">bronze</td>
+<td style="text-align: left;">/wiki/Lisa_Scheenaard</td>
 <td style="text-align: left;">/wiki/Netherlands_at_the_2020_Summer_Olympics</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">/wiki/Badminton_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_doubles</td>
-<td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Zheng_Siwei</td>
-<td style="text-align: left;">/wiki/China_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_eight</td>
+<td style="text-align: left;">bronze</td>
+<td style="text-align: left;">/wiki/Thomas_Ford_(rower)</td>
+<td style="text-align: left;">/wiki/Great_Britain_at_the_2020_Summer_Olympics</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_quadruple_sculls</td>
+<td style="text-align: left;">/wiki/Cycling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_road_time_trial</td>
+<td style="text-align: left;">bronze</td>
+<td style="text-align: left;">/wiki/Rohan_Dennis</td>
+<td style="text-align: left;">/wiki/Australia_at_the_2020_Summer_Olympics</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">/wiki/Sailing_at_the_2020_Summer_Olympics_%E2%80%93_49erFX</td>
 <td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Tom_Barras_(rower)</td>
-<td style="text-align: left;">/wiki/Great_Britain_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">/wiki/Susann_Beucke</td>
+<td style="text-align: left;">/wiki/Germany_at_the_2020_Summer_Olympics</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_48_kg</td>
+<td style="text-align: left;">silver</td>
+<td style="text-align: left;">/wiki/Funa_Tonaki</td>
+<td style="text-align: left;">/wiki/Japan_at_the_2020_Summer_Olympics</td>
 </tr>
 </tbody>
 </table>
@@ -2853,7 +2866,7 @@ distill-header .nav a {
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">wiki_api_links</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;https://en.wikipedia.org/w/api.php?action=query&amp;redirects=true&amp;prop=pageprops&amp;titles=Jack_Cleary_(rower)&amp;format=json&quot;</code></pre>
+<pre><code>[1] &quot;https://en.wikipedia.org/w/api.php?action=query&amp;redirects=true&amp;prop=pageprops&amp;titles=Xu_Fei&amp;format=json&quot;</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2923,13 +2936,13 @@ distill-header .nav a {
 </div>
 <table>
 <colgroup>
-<col style="width: 36%"></col>
+<col style="width: 37%"></col>
 <col style="width: 2%"></col>
 <col style="width: 16%"></col>
-<col style="width: 19%"></col>
+<col style="width: 18%"></col>
 <col style="width: 8%"></col>
-<col style="width: 7%"></col>
-<col style="width: 9%"></col>
+<col style="width: 6%"></col>
+<col style="width: 8%"></col>
 </colgroup>
 <thead>
 <tr class="header">
@@ -2944,94 +2957,94 @@ distill-header .nav a {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_quadruple_sculls</td>
+<td style="text-align: left;">/wiki/Triathlon_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_relay</td>
 <td style="text-align: left;">bronze</td>
-<td style="text-align: left;">/wiki/Cameron_Girdlestone</td>
-<td style="text-align: left;">/wiki/Australia_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q20961843</td>
-<td style="text-align: left;">Q62020029</td>
-<td style="text-align: left;">Q56045618</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_130_kg</td>
-<td style="text-align: left;">bronze</td>
-<td style="text-align: left;">/wiki/Sergey_Semenov_(wrestler)</td>
-<td style="text-align: left;">/wiki/ROC_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q21152637</td>
-<td style="text-align: left;">Q76712455</td>
-<td style="text-align: left;">Q50014488</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">/wiki/Tennis_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_singles</td>
-<td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Mark%C3%A9ta_Vondrou%C5%A1ov%C3%A1</td>
-<td style="text-align: left;">/wiki/Czech_Republic_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q18918709</td>
-<td style="text-align: left;">Q65242336</td>
-<td style="text-align: left;">Q50014477</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team</td>
-<td style="text-align: left;">gold</td>
-<td style="text-align: left;">/wiki/Madeleine_Malonga</td>
+<td style="text-align: left;">/wiki/Cassandre_Beaugrand</td>
 <td style="text-align: left;">/wiki/France_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q22917839</td>
-<td style="text-align: left;">Q65235579</td>
+<td style="text-align: left;">Q17485841</td>
+<td style="text-align: left;">Q65242368</td>
 <td style="text-align: left;">Q33019138</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">/wiki/Swimming_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_4_%C3%97_100_metre_medley_relay</td>
-<td style="text-align: left;">gold</td>
-<td style="text-align: left;">/wiki/Caeleb_Dressel</td>
+<tr class="even">
+<td style="text-align: left;">/wiki/Diving_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_synchronized_10_metre_platform</td>
+<td style="text-align: left;">silver</td>
+<td style="text-align: left;">/wiki/Jessica_Parratto</td>
 <td style="text-align: left;">/wiki/United_States_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q21005673</td>
-<td style="text-align: left;">Q64514188</td>
+<td style="text-align: left;">Q21066029</td>
+<td style="text-align: left;">Q65242433</td>
 <td style="text-align: left;">Q42914289</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_68_kg</td>
+<td style="text-align: left;">bronze</td>
+<td style="text-align: left;">/wiki/Alla_Cherkasova</td>
+<td style="text-align: left;">/wiki/Ukraine_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">Q4730242</td>
+<td style="text-align: left;">Q76882232</td>
+<td style="text-align: left;">Q42914058</td>
+</tr>
 <tr class="even">
-<td style="text-align: left;">/wiki/Athletics_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_200_metres</td>
+<td style="text-align: left;">/wiki/Archery_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team</td>
 <td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Christine_Mboma</td>
-<td style="text-align: left;">/wiki/Namibia_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q106520141</td>
-<td style="text-align: left;">Q65242093</td>
-<td style="text-align: left;">Q42917136</td>
+<td style="text-align: left;">/wiki/Gabriela_Schloesser</td>
+<td style="text-align: left;">/wiki/Netherlands_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">Q26131745</td>
+<td style="text-align: left;">Q63985809</td>
+<td style="text-align: left;">Q50014459</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">/wiki/Diving_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_3_metre_springboard</td>
-<td style="text-align: left;">bronze</td>
-<td style="text-align: left;">/wiki/Jack_Laugher</td>
+<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_eight</td>
+<td style="text-align: left;">gold</td>
+<td style="text-align: left;">/wiki/Kasia_Gruchalla-Wesierski</td>
+<td style="text-align: left;">/wiki/Canada_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">Q81444088</td>
+<td style="text-align: left;">Q62020034</td>
+<td style="text-align: left;">Q42913821</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">/wiki/Triathlon_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s</td>
+<td style="text-align: left;">silver</td>
+<td style="text-align: left;">/wiki/Georgia_Taylor-Brown</td>
 <td style="text-align: left;">/wiki/Great_Britain_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q285871</td>
-<td style="text-align: left;">Q65242462</td>
+<td style="text-align: left;">Q9267342</td>
+<td style="text-align: left;">Q65242359</td>
 <td style="text-align: left;">Q50014472</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">/wiki/Sailing_at_the_2020_Summer_Olympics_%E2%80%93_Laser</td>
+<tr class="odd">
+<td style="text-align: left;">/wiki/Fencing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_team_sabre</td>
 <td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Tonci_Stipanovic</td>
-<td style="text-align: left;">/wiki/Croatia_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q7823773</td>
-<td style="text-align: left;">Q65229879</td>
-<td style="text-align: left;">Q42913900</td>
+<td style="text-align: left;">/wiki/Luca_Curatoli</td>
+<td style="text-align: left;">/wiki/Italy_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">Q16657905</td>
+<td style="text-align: left;">Q62520526</td>
+<td style="text-align: left;">Q42914554</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">/wiki/Rowing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_coxless_four</td>
+<td style="text-align: left;">silver</td>
+<td style="text-align: left;">/wiki/%C8%98tefan_Constantin_Berariu</td>
+<td style="text-align: left;">/wiki/Romania_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">Q61711670</td>
+<td style="text-align: left;">Q62020027</td>
+<td style="text-align: left;">Q50014483</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_slalom_C-1</td>
-<td style="text-align: left;">silver</td>
-<td style="text-align: left;">/wiki/Luk%C3%A1%C5%A1_Rohan</td>
+<td style="text-align: left;">/wiki/Shooting_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_trap</td>
+<td style="text-align: left;">gold</td>
+<td style="text-align: left;">/wiki/List_of_Olympic_records_in_shooting</td>
 <td style="text-align: left;">/wiki/Czech_Republic_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q20018282</td>
-<td style="text-align: left;">Q76711065</td>
+<td style="text-align: left;">Q2386708</td>
+<td style="text-align: left;">Q65242327</td>
 <td style="text-align: left;">Q50014477</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">/wiki/Rugby_sevens_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_tournament</td>
-<td style="text-align: left;">bronze</td>
-<td style="text-align: left;">/wiki/Rusila_Nagasau</td>
-<td style="text-align: left;">/wiki/Fiji_at_the_2020_Summer_Olympics</td>
-<td style="text-align: left;">Q26217963</td>
-<td style="text-align: left;">Q39080783</td>
-<td style="text-align: left;">Q42914314</td>
+<td style="text-align: left;">/wiki/Swimming_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_4_%C3%97_100_metre_freestyle_relay</td>
+<td style="text-align: left;">gold</td>
+<td style="text-align: left;">/wiki/Madison_Wilson</td>
+<td style="text-align: left;">/wiki/Australia_at_the_2020_Summer_Olympics</td>
+<td style="text-align: left;">Q20754732</td>
+<td style="text-align: left;">Q63985613</td>
+<td style="text-align: left;">Q56045618</td>
 </tr>
 </tbody>
 </table>
@@ -3327,26 +3340,26 @@ distill-header .nav a {
 <tr class="even">
 <td style="text-align: left;">event_sport_wikidata_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">0.496%</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">0.744%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">event_sport</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">0.496%</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">0.744%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">event_part_of_wikidata_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">0.496%</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">0.744%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">event_part_of</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">0.496%</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">0.744%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">medal</td>
@@ -3405,134 +3418,134 @@ distill-header .nav a {
 <tr class="odd">
 <td style="text-align: left;">date_of_birth</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">0.744%</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">0.579%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">sex_or_gender_wikidata_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">0.331%</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">0.165%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">sex_or_gender</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">0.331%</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">0.165%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">place_of_birth_wikidata_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">205</td>
-<td style="text-align: left;">16.956%</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: left;">14.475%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">place_of_birth</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">209</td>
-<td style="text-align: left;">17.287%</td>
+<td style="text-align: right;">179</td>
+<td style="text-align: left;">14.806%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">place_of_birth_coordinates</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">211</td>
-<td style="text-align: left;">17.452%</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">14.971%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">lat</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">211</td>
-<td style="text-align: left;">17.452%</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">14.971%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">lon</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">211</td>
-<td style="text-align: left;">17.452%</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">14.971%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">place_of_birth_located_in_wikidata_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">233</td>
-<td style="text-align: left;">19.272%</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: left;">16.791%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">place_of_birth_located_in</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">242</td>
-<td style="text-align: left;">20.017%</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: left;">17.452%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">nuts0_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">nuts0_name</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">nuts1_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">nuts1_name</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">nuts2_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">nuts2_name</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">nuts2_population</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">nuts2_gdp</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">920</td>
-<td style="text-align: left;">76.096%</td>
+<td style="text-align: right;">905</td>
+<td style="text-align: left;">74.855%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">nuts3_id</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">nuts3_name</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">nuts3_population</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">851</td>
-<td style="text-align: left;">70.389%</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: left;">68.404%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">nuts3_gdp</td>
 <td style="text-align: right;">1209</td>
-<td style="text-align: right;">920</td>
-<td style="text-align: left;">76.096%</td>
+<td style="text-align: right;">905</td>
+<td style="text-align: left;">74.855%</td>
 </tr>
 </tbody>
 </table>
@@ -3559,6 +3572,15 @@ distill-header .nav a {
 <p>Here is the dataset for <a href="medalists_nuts_only.csv">only medalists with place of birth in a NUTS region</a>.</p>
 <p>Here is the dataset for <a href="medalists_missing_place_of_birth.csv">only medalists with no known place of birth in Wikidata</a> (a good starting place to contribute to Wikidata).</p>
 <p>See <a href="https://medium.com/european-data-journalism-network/the-data-you-need-to-win-the-olympics-if-you-go-nuts-6d03b9df34e6">this blog post introducing the dataset</a>, with some preliminary results about which NUTS 2 got more medals.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># re-check from Wikidata missing data to see if they have been added</span>
+<span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">&quot;medalists_missing_place_of_birth.csv&quot;</span>, show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">medalist_wikidata_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://edjnet.github.io/tidywikidatar/reference/tw_get.html">tw_get</a></span><span class="op">(</span>overwrite_cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+</code></pre>
+</div>
+</div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

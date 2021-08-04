@@ -193,7 +193,7 @@ o20_get_medals_from_table <- function(table) {
                                        bronze_medalist = current_row %>% 
                                          o20_get_medalist_from_cell(td_number = 6), 
                                        bronze_country = current_row %>% 
-                                         o20_get_country_from_cell(td_number = 6),
+                                         o20_get_country_from_cell(td_number = 6)
         ) 
       } else {
         return(NULL)
@@ -233,13 +233,14 @@ Once these functions are defined, then everything looks super-easy. Here's how t
 
 ```{r extract tables from local wikipedia page}
 
-all_medalists_df <- purrr::map_dfr(.x = all_medal_tables,
+all_medalists_df_pre <- purrr::map_dfr(.x = all_medal_tables,
                                    .f = function(table) {
                                      o20_get_medals_from_table(table)
                                    })
 
+all_medalists_df_pre$medalist_link[all_medalists_df_pre$medalist_link == "/wiki/Gianmarco_Tamberi"&all_medalists_df_pre$delegation_link=="/wiki/Qatar_at_the_2020_Summer_Olympics"] <- "/wiki/Mutaz_Essa_Barshim"
 
-all_medalists_df$medalist_link[all_medalists_df$medalist_link == "/wiki/Gianmarco_Tamberi"&all_medalists_df$delegation_link=="/wiki/Qatar_at_the_2020_Summer_Olympics"] <- "/wiki/Mutaz_Essa_Barshim"
+all_medalists_df_pre$medalist_link[all_medalists_df_pre$medalist_link == "/wiki/Mutaz_Essa_Barshim"&all_medalists_df_pre$delegation_link=="/wiki/Italy_at_the_2020_Summer_Olympics"] <- "/wiki/Gianmarco_Tamberi"
 
 
 ## add manually bronze medals shared by two athletes... less than ideal, but not in the modd to fix the parser now
@@ -262,8 +263,20 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg", "bronze", "/wiki/Zhou_Qian", "/wiki/China_at_the_2020_Summer_Olympics"
                 )
 
-all_medalists_df <- bind_rows(all_medalists_df,
-                              double_medals)
+all_medalists_df <- bind_rows(all_medalists_df_pre,
+                              double_medals) %>% 
+  distinct(event_link, medalist_link, .keep_all = TRUE)
+
+
+####  check: 
+# dplyr::group_by(event_link, medalist_link) %>% 
+# count() %>% 
+# dplyr::filter(n>1)
+
+# nrow(all_medalists_df_pre)+nrow(double_medals)
+
+
+ 
 
 
 all_medalists_df %>% 
@@ -687,3 +700,13 @@ Here is the dataset for [only medalists with place of birth in a NUTS region](me
 Here is the dataset for [only medalists with no known place of birth in Wikidata](medalists_missing_place_of_birth.csv) (a good starting place to contribute to Wikidata).
 
 See [this blog post introducing the dataset](https://medium.com/european-data-journalism-network/the-data-you-need-to-win-the-olympics-if-you-go-nuts-6d03b9df34e6), with some preliminary results about which NUTS 2 got more medals.
+
+
+
+```{r eval = FALSE}
+# re-check from Wikidata missing data to see if they have been added
+readr::read_csv("medalists_missing_place_of_birth.csv", show_col_types = FALSE) %>% 
+  dplyr::pull(medalist_wikidata_id) %>% 
+  tw_get(overwrite_cache = TRUE)
+```
+
