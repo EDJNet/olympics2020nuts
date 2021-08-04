@@ -26,6 +26,8 @@ The following files should be of most interest:
     (you are welcome to contribute to reduce the size of this table by
     adding the relevant information to Wikidata if it publicly
     available).
+  - [medals\_per\_million\_residents\_in\_nuts2.csv](medals_per_million_residents_in_nuts2.csv):
+    a possible way to look at the data
 
 You can find the script used to generate this dataset in the file
 `index.Rmd`, or you can look at the [rendered version with
@@ -40,11 +42,11 @@ For some early results based on this dataset, see:
 
 ## Summary statistics and update status
 
-Total medalists: 1 209 Total medalists with place of birth recorded in
-Wikidata: 1 000 Total medalists with place of birth recorded in a NUTS
-region: 358
+Total medalists: 1 237 Total medalists with place of birth recorded in
+Wikidata: 1 055 Total medalists with place of birth recorded in a NUTS
+region: 397
 
-Last updated: 2021-08-03 16:38:35
+Last updated: 2021-08-04 12:15:30
 
 ## Credits
 

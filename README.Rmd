@@ -26,6 +26,7 @@ The following files should be of most interest:
 - [medalists_all.csv](medalists_all.csv): the main file, including all available data
 - [medalists_nuts_only.csv](medalists_nuts_only.csv): only medalists with a place of birth available in Wikidata, and located within a NUTS region
 - [medalists_missing_place_of_birth.csv](medalists_missing_place_of_birth.csv): table with all medalists with no recorded data of birth in Wikidata (you are welcome to contribute to reduce the size of this table by adding the relevant information to Wikidata if it publicly available). 
+- [medals_per_million_residents_in_nuts2.csv](medals_per_million_residents_in_nuts2.csv): a possible way to look at the data
 
 
 You can find the script used to generate this dataset in the file `index.Rmd`, or you can look at the [rendered version with comments](https://edjnet.github.io/olympics2020nuts/).

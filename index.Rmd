@@ -689,6 +689,21 @@ all_medalists_wd_nuts_pop_df %>%
   dplyr::filter(is.na(place_of_birth_wikidata_id)==TRUE) %>% 
   dplyr::select(event_name, medal, medalist_name, medalist_wikidata_id, country_medal, delegation_name, sex_or_gender) %>% 
   readr::write_csv(file = "medalists_missing_place_of_birth.csv")
+
+
+all_medalists_wd_nuts_pop_df %>% 
+  dplyr::filter(is.na(nuts2_name)==FALSE) %>% 
+  dplyr::group_by(nuts2_name) %>% 
+  dplyr::count(name = "Total medals", sort = TRUE) %>% 
+dplyr::ungroup() %>% 
+  dplyr::left_join(y = all_medalists_wd_nuts_pop_df %>% 
+  dplyr::distinct(nuts2_name, nuts2_population, nuts0_name), by = "nuts2_name") %>% 
+  dplyr::mutate(`Medals per million residents` = 1e06/(nuts2_population/`Total medals`)) %>% 
+  dplyr::arrange(desc(`Medals per million residents`)) %>% 
+  dplyr::rename(`NUTS 2` = nuts2_name,
+                Population = nuts2_population,
+                Country = nuts0_name) %>% 
+  readr::write_csv(file = "medals_per_million_residents_in_nuts2.csv")
 ```
 
 
