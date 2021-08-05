@@ -29,6 +29,10 @@ The following files should be of most interest:
   - [medals\_per\_million\_residents\_in\_nuts2.csv](medals_per_million_residents_in_nuts2.csv):
     a possible way to look at the data
 
+An interactive map with all medalists by place of birth is available
+[following this
+link](https://edjnet.github.io/olympics2020nuts/medalists_map.html).
+
 You can find the script used to generate this dataset in the file
 `index.Rmd`, or you can look at the [rendered version with
 comments](https://edjnet.github.io/olympics2020nuts/).
@@ -46,7 +50,7 @@ Total medalists: 1 335 Total medalists with place of birth recorded in
 Wikidata: 1 137 Total medalists with place of birth recorded in a NUTS
 region: 420
 
-Last updated: 2021-08-05 10:28:39
+Last updated: 2021-08-05 10:45:27
 
 ## Credits
 

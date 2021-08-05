@@ -720,6 +720,65 @@ Here is the dataset for [only medalists with no known place of birth in Wikidata
 See [this blog post introducing the dataset](https://medium.com/european-data-journalism-network/the-data-you-need-to-win-the-olympics-if-you-go-nuts-6d03b9df34e6), with some preliminary results about which NUTS 2 got more medals.
 
 
+## Update global map
+
+
+
+
+
+```{r}
+library("dplyr", warn.conflicts = FALSE)
+library("leaflet")
+
+all_medalists_df <- readr::read_csv("medalists_all.csv", show_col_types = FALSE) %>% 
+  dplyr::filter(is.na(lon)==FALSE)
+# %>% 
+#   dplyr::mutate(img_filename = purrr::map_chr(.x = medalist_wikidata_id,
+#                                               function(x) {tw_get_image(id = x)[1]})) 
+
+
+
+
+all_medalists_ll <- all_medalists_df  %>% 
+  dplyr::select(lat, lon, medal, medalist_wikidata_id, medalist_name, medalist_link, event_part_of, delegation_name, place_of_birth
+                #, img_filename
+                ) %>% 
+  dplyr::mutate(medal_icon_link = dplyr::case_when(medal == "gold" ~ "https://upload.wikimedia.org/wikipedia/commons/4/4f/Gold_medal_olympic.svg",
+                                                   medal == "silver" ~ "https://upload.wikimedia.org/wikipedia/commons/6/67/Silver_medal_olympic.svg",
+                                                   medal == "bronze" ~ "https://upload.wikimedia.org/wikipedia/commons/f/f9/Bronze_medal_olympic.svg")) %>% 
+  dplyr::group_by(medalist_wikidata_id) %>% 
+  dplyr::mutate(medal = stringr::str_c(medal,collapse = ", "), event_part_of = stringr::str_c(unique(event_part_of), collapse = ", ")) %>% 
+  dplyr::mutate(popup_content = stringr::str_c(
+    "<big><b><a href='https://en.wikipedia.org", medalist_link, "'>", medalist_name, "</a></b><br />",
+    "Born in ", place_of_birth,"<br />",
+    "Won ", medal, " medal in ", event_part_of, " for ", stringr::str_remove(string = delegation_name, pattern = " at the 2020 Summer Olympics"), "</big>"
+    #,
+#    "<a href='https://en.wikipedia.org", medalist_link, "'>", "<img src='", "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/", img_filename,  "&width=120'></a>"
+    
+    ))
+
+
+leaflet_medals <- all_medalists_ll %>% 
+  leaflet() %>%
+  leaflet::addTiles(urlTemplate = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png") %>% 
+  addMarkers(
+    lng = all_medalists_ll$lon,
+    lat = all_medalists_ll$lat,
+    popup = all_medalists_ll$popup_content,
+    icon = ~ icons(
+      iconUrl = medal_icon_link,
+      iconWidth = 24, iconHeight = 24,
+    )
+  )
+
+htmlwidgets::saveWidget(leaflet_medals, file="medalists_map.html",
+                        title = "Medalists at the 2020 Summer Olympics by place of birth")
+
+leaflet_medals
+```
+
+You can see this [interactive map in full screen following this link](https://edjnet.github.io/olympics2020nuts/medalists_map.html).
+
 
 ```{r eval = FALSE}
 # re-check from Wikidata missing data to see if they have been added
