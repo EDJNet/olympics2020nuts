@@ -39,9 +39,9 @@ For some early results based on this dataset, see:
 
 ## Summary statistics and update status
 
-Total medalists: `r scales::number(nrow(all_medalists_df))`
-Total medalists with place of birth recorded in Wikidata: `r scales::number(nrow(all_medalists_df %>% dplyr::filter(is.na(place_of_birth_wikidata_id)==FALSE)))`
-Total medalists with place of birth recorded in a NUTS region: `r scales::number(nrow(all_medalists_df %>% dplyr::filter(is.na(nuts0_id)==FALSE)))`
+- Total medalists: `r scales::number(nrow(all_medalists_df))`
+- Total medalists with place of birth recorded in Wikidata: `r scales::number(nrow(all_medalists_df %>% dplyr::filter(is.na(place_of_birth_wikidata_id)==FALSE)))`
+- Total medalists with place of birth recorded in a NUTS region: `r scales::number(nrow(all_medalists_df %>% dplyr::filter(is.na(nuts0_id)==FALSE)))`
 
 Last updated: `r Sys.time()`
 
