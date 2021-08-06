@@ -123,7 +123,7 @@ o20_get_medals_from_table <- function(table) {
     html_table() %>% 
     colnames()
   
-  if (!(length(table_colnames)==4|length(table_colnames)==7)) {
+  if (!(length(table_colnames)==4|length(table_colnames)==7|length(table_colnames)==6)) {
     return(NULL)
   }
   
@@ -194,6 +194,27 @@ o20_get_medals_from_table <- function(table) {
                                          o20_get_medalist_from_cell(td_number = 6), 
                                        bronze_country = current_row %>% 
                                          o20_get_country_from_cell(td_number = 6)
+        ) 
+      } else if (col_number==6) {
+        
+        
+        medal_row_df <- tibble::tibble(event_link = current_row %>% 
+                                         html_nodes("td") %>% 
+                                         .[[1]] %>% 
+                                         html_nodes("a") %>% 
+                                         html_attr("href"), 
+                                       gold_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 2), 
+                                       gold_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 2),
+                                       silver_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 4), 
+                                       silver_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 4),
+                                       bronze_medalist = current_row %>% 
+                                         o20_get_medalist_from_cell(td_number = 5), 
+                                       bronze_country = current_row %>% 
+                                         o20_get_country_from_cell(td_number = 5)
         ) 
       } else {
         return(NULL)
