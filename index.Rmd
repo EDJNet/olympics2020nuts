@@ -739,6 +739,8 @@ all_medalists_df <- readr::read_csv("medalists_all.csv", show_col_types = FALSE)
 
 
 
+
+
 all_medalists_ll <- all_medalists_df  %>% 
   dplyr::select(lat, lon, medal, medalist_wikidata_id, medalist_name, medalist_link, event_part_of, delegation_name, place_of_birth
                 #, img_filename
@@ -755,7 +757,18 @@ all_medalists_ll <- all_medalists_df  %>%
     #,
 #    "<a href='https://en.wikipedia.org", medalist_link, "'>", "<img src='", "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/", img_filename,  "&width=120'></a>"
     
-    ))
+    )) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::group_by(lat, lon) %>% 
+  dplyr::add_count(name = "n_born_same_place") %>% 
+  dplyr::mutate(lat = dplyr::if_else(condition = n_born_same_place>1,
+                               true = jitter(x = lat, amount = 0.01),
+                               false = lat,
+                               missing = as.numeric(NA))) %>% 
+    dplyr::mutate(lon = dplyr::if_else(condition = n_born_same_place>1,
+                               true = jitter(x = lon, amount = 0.01),
+                               false = lon,
+                               missing = as.numeric(NA)))
 
 # remove the following line if you're running it on your own:
 # <script defer data-domain=\"edjnet.github.io\" src=\"https://plausible.europeandatajournalism.eu/js/plausible.js\"></script>
