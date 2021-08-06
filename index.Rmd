@@ -757,11 +757,16 @@ all_medalists_ll <- all_medalists_df  %>%
     
     ))
 
+# remove the following line if you're running it on your own:
+# <script defer data-domain=\"edjnet.github.io\" src=\"https://plausible.europeandatajournalism.eu/js/plausible.js\"></script>
+# the first part is necessary for responsive popups on mobile
+
+responsiveness_and_stats <- "\'<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><script defer data-domain=\"edjnet.github.io\" src=\"https://plausible.europeandatajournalism.eu/js/plausible.js\"></script>\'"
 
 leaflet_medals <- all_medalists_ll %>% 
   leaflet() %>%
   leaflet::addTiles(urlTemplate = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png") %>% 
-  addMarkers(
+  leaflet::addMarkers(
     lng = all_medalists_ll$lon,
     lat = all_medalists_ll$lat,
     popup = all_medalists_ll$popup_content,
@@ -769,10 +774,18 @@ leaflet_medals <- all_medalists_ll %>%
       iconUrl = medal_icon_link,
       iconWidth = 24, iconHeight = 24,
     )
-  )
+  ) %>% 
+  htmlwidgets::onRender(paste0("
+    function(el, x) {
+      $('head').append(",responsiveness_and_stats,");
+    }"))
+
+
+
 
 htmlwidgets::saveWidget(leaflet_medals, file="medalists_map.html",
-                        title = "Medalists at the 2020 Summer Olympics by place of birth")
+                        title = "Medalists at the 2020 Summer Olympics by place of birth",
+                        selfcontained = TRUE)
 
 leaflet_medals
 ```
