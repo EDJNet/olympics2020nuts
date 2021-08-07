@@ -267,7 +267,22 @@ all_medalists_df_pre$medalist_link[all_medalists_df_pre$medalist_link == "/wiki/
 ## add manually bronze medals shared by two athletes... less than ideal, but not in the modd to fix the parser now
 
 double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegation_link,
-                "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Karriss_Artingstall", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                                 
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_flyweight", "bronze", "/wiki/Saken_Bibossinov", "/wiki/Kazakhstan_at_the_2020_Summer_Olympics",                             "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_featherweight","bronze", "/wiki/L%C3%A1zaro_%C3%81lvarez", "/wiki/Cuba_at_the_2020_Summer_Olympics",
+                              "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_lightweight", "bronze", "/wiki/Harry_Garside", "/wiki/Australia_at_the_2020_Summer_Olympics",
+                              "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_welterweight", "bronze", "/wiki/Aidan_Walsh_(boxer)", "/wiki/Ireland_at_the_2020_Summer_Olympics",
+                              "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_middleweight", "bronze", "/wiki/Gleb_Bakshi", "/wiki/ROC_at_the_2020_Summer_Olympics", 
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_light_heavyweight", "bronze", "/wiki/Imam_Khataev", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_heavyweight", "bronze", "/wiki/Kamshybek_Kunkabayev", "/wiki/Kazakhstan_at_the_2020_Summer_Olympics",
+                         
+                         
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_flyweight", "bronze", "/wiki/Tsukimi_Namiki", "/wiki/Japan_at_the_2020_Summer_Olympics",
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Karriss_Artingstall", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_lightweight", "bronze", "/wiki/Mira_Potkonen", "/wiki/Finland_at_the_2020_Summer_Olympics",
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_welterweight", "bronze", "/wiki/Oshae_Jones", "/wiki/United_States_at_the_2020_Summer_Olympics",
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_middleweight", "bronze", "/wiki/Zemfira_Magomedalieva", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                
+                
                 
                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_58_kg", "bronze", "/wiki/Mikhail_Artamonov_(taekwondo)", "/wiki/ROC_at_the_2020_Summer_Olympics",
                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_68_kg", "bronze", "/wiki/Zhao_Shuai", "/wiki/China_at_the_2020_Summer_Olympics",
