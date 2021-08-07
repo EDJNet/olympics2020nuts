@@ -7,11 +7,11 @@
 
 <!-- badges: end -->
 
-In this repository you can find a dataset based with details about
-medalists at the 2020 Summer Olympics extracted from Wikipedia and
-Wikidata. When place of birth for a medalist was available, additional
-data have been included about the NUTS 2 or NUTS 3 region where they
-were born (relevant for European countries that are [covered by
+In this repository you can find a dataset with details about medalists
+at the 2020 Summer Olympics extracted from Wikipedia and Wikidata. When
+place of birth for a medalist was available, additional data have been
+included about the NUTS 2 or NUTS 3 region where they were born
+(relevant for European countries that are [covered by
 NUTS](https://ec.europa.eu/eurostat/web/nuts/nuts-maps)).
 
 The following files should be of most interest:
@@ -46,11 +46,11 @@ For some early results based on this dataset, see:
 
 ## Summary statistics and update status
 
-  - Total medalists: 2 159
-  - Total medalists with place of birth recorded in Wikidata: 1 906
-  - Total medalists with place of birth recorded in a NUTS region: 710
+  - Total medalists: 2 210
+  - Total medalists with place of birth recorded in Wikidata: 1 946
+  - Total medalists with place of birth recorded in a NUTS region: 720
 
-Last updated: 2021-08-07 19:20:21
+Last updated: 2021-08-07 22:15:45
 
 ## Credits
 

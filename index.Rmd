@@ -264,7 +264,9 @@ all_medalists_df_pre$medalist_link[all_medalists_df_pre$medalist_link == "/wiki/
 all_medalists_df_pre$medalist_link[all_medalists_df_pre$medalist_link == "/wiki/Mutaz_Essa_Barshim"&all_medalists_df_pre$delegation_link=="/wiki/Italy_at_the_2020_Summer_Olympics"] <- "/wiki/Gianmarco_Tamberi"
 
 
-## add manually bronze medals shared by two athletes... less than ideal, but not in the modd to fix the parser now
+## add manually bronze medals shared by two athletes... less than ideal, but not in the mood to fix the parser now
+
+## update: I didn't realise there were so many double-bronze... a tiny fix above would have been much quicker, but anyways...
 
 double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegation_link,
                                  
@@ -281,7 +283,48 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_lightweight", "bronze", "/wiki/Mira_Potkonen", "/wiki/Finland_at_the_2020_Summer_Olympics",
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_welterweight", "bronze", "/wiki/Oshae_Jones", "/wiki/United_States_at_the_2020_Summer_Olympics",
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_middleweight", "bronze", "/wiki/Zemfira_Magomedalieva", "/wiki/ROC_at_the_2020_Summer_Olympics",
-                
+                         
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_60_kg", "bronze", "/wiki/Luka_Mkheidze", "/wiki/France_at_the_2020_Summer_Olympics", 
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_66_kg", "bronze", "/wiki/Daniel_Cargnin_(judoka)", "/wiki/Brazil_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_73_kg", "bronze", "/wiki/Tsend-Ochiryn_Tsogtbaatar", "/wiki/Mongolia_at_the_2020_Summer_Olympics", 
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_81_kg", "bronze", "/wiki/Matthias_Casse", "/wiki/Belgium_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_90_kg", "bronze", "/wiki/Kriszti%C3%A1n_T%C3%B3th", "/wiki/Hungary_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_100_kg", "bronze", "/wiki/Niyaz_Ilyasov", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B100_kg", "bronze", "/wiki/Tamerlan_Bashaev", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                         
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_48_kg", "bronze", "/wiki/Urantsetseg_Munkhbat", "/wiki/Mongolia_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_52_kg", "bronze", "/wiki/Chelsie_Giles", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_57_kg", "bronze", "/wiki/Tsukasa_Yoshida", "/wiki/Japan_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_63_kg", "bronze", "/wiki/Catherine_Beauchemin-Pinard", "/wiki/Canada_at_the_2020_Summer_Olympics", 
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_70_kg", "bronze", "/wiki/Sanne_van_Dijke", "/wiki/Netherlands_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_78_kg", "bronze", "/wiki/Mayra_Aguiar", "/wiki/Brazil_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B78_kg", "bronze", "/wiki/Romane_Dicko", "/wiki/France_at_the_2020_Summer_Olympics",
+                         
+                         
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Tohar_Butbul", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Raz_Hershko", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Li_Kochman", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Inbar_Lanir", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Sagi_Muki", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Timna_Nelson-Levy", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Peter_Paltchik", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Shira_Rishony", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Or_Sasson", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Gili_Sharir", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Baruch_Shmailov", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                         
+                         
+                         
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_kata", "bronze", "/wiki/Ali_Sofuo%C4%9Flu", "/wiki/Turkey_at_the_2020_Summer_Olympics",
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_67_kg", "bronze", "/wiki/Abdelrahman_Al-Masatfa", "/wiki/Jordan_at_the_2020_Summer_Olympics",
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_75_kg", "bronze", "/wiki/Stanislav_Horuna", "/wiki/Ukraine_at_the_2020_Summer_Olympics",
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B75_kg", "bronze", "/wiki/U%C4%9Fur_Akta%C5%9F", "/wiki/U%C4%9Fur_Akta%C5%9F", 
+               
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_kata", "bronze", "/wiki/Viviana_Bottaro", "/wiki/Italy_at_the_2020_Summer_Olympics",
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_55_kg", "bronze", "/wiki/Wen_Tzu-yun", "/wiki/Chinese_Taipei_at_the_2020_Summer_Olympics",
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_61_kg", "bronze", "/wiki/Merve_%C3%87oban", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
+           "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B61_kg", "bronze", "/wiki/Sofya_Berultseva", "/wiki/Ukraine_at_the_2020_Summer_Olympics", 
+               
                 
                 
                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_58_kg", "bronze", "/wiki/Mikhail_Artamonov_(taekwondo)", "/wiki/ROC_at_the_2020_Summer_Olympics",
@@ -294,8 +337,29 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_67_kg", "bronze", "/wiki/Hedaya_Wahba", "/wiki/Egypt_at_the_2020_Summer_Olympics",
                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B67_kg", "bronze", "/wiki/Bianca_Walkden", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
                 
+           
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_57_kg", "bronze", "/wiki/Thomas_Gilman", "/wiki/United_States_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_65_kg", "bronze", "/wiki/Bajrang_Punia", "/wiki/India_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_74_kg", "bronze", "/wiki/Bekzod_Abdurakhmonov", "/wiki/Uzbekistan_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_86_kg", "bronze", "/wiki/Myles_Amine", "/wiki/San_Marino_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_97_kg", "bronze", "/wiki/Abraham_Conyedo", "/wiki/Italy_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_125_kg", "bronze", "/wiki/Taha_Akg%C3%BCl", "/wiki/Turkey_at_the_2020_Summer_Olympics",
+           
+           
+           
+           
                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_60_kg", "bronze", "/wiki/Sergey_Emelin", "/wiki/ROC_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_67_kg", "bronze", "/wiki/Mohamed_Ibrahim_El-Sayed", "/wiki/Egypt_at_the_2020_Summer_Olympics", 
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_77_kg", "bronze", "/wiki/Rafig_Huseynov", "/wiki/Azerbaijan_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_87_kg", "bronze", "/wiki/Zurab_Datunashvili", "/wiki/Serbia_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_97_kg", "bronze", "/wiki/Mohammad_Hadi_Saravi", "/wiki/Iran_at_the_2020_Summer_Olympics",
                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_130_kg", "bronze", "/wiki/Sergey_Semenov_(wrestler)", "/wiki/ROC_at_the_2020_Summer_Olympics",
+           
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_50_kg", "bronze", "/wiki/Sarah_Hildebrandt", "/wiki/United_States_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_53_kg", "bronze", "/wiki/Bat-Ochiryn_Bolortuyaa", "/wiki/Mongolia_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_57_kg", "bronze", "/wiki/Evelina_Nikolova", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_62_kg", "bronze", "/wiki/Taybe_Yusein", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
+           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_68_kg", "bronze", "/wiki/Meerim_Zhumanazarova", "/wiki/Kyrgyzstan_at_the_2020_Summer_Olympics",
                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg", "bronze", "/wiki/Zhou_Qian", "/wiki/China_at_the_2020_Summer_Olympics"
                 )
 
