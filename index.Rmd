@@ -318,7 +318,7 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_kata", "bronze", "/wiki/Ali_Sofuo%C4%9Flu", "/wiki/Turkey_at_the_2020_Summer_Olympics",
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_67_kg", "bronze", "/wiki/Abdelrahman_Al-Masatfa", "/wiki/Jordan_at_the_2020_Summer_Olympics",
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_75_kg", "bronze", "/wiki/Stanislav_Horuna", "/wiki/Ukraine_at_the_2020_Summer_Olympics",
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B75_kg", "bronze", "/wiki/U%C4%9Fur_Akta%C5%9F", "/wiki/U%C4%9Fur_Akta%C5%9F", 
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B75_kg", "bronze", "/wiki/U%C4%9Fur_Akta%C5%9F", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
                
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_kata", "bronze", "/wiki/Viviana_Bottaro", "/wiki/Italy_at_the_2020_Summer_Olympics",
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_55_kg", "bronze", "/wiki/Wen_Tzu-yun", "/wiki/Chinese_Taipei_at_the_2020_Summer_Olympics",
