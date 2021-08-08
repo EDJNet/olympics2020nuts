@@ -7,11 +7,11 @@ archery at the 2020 Summer Olympics – women's individual,gold,An San,Q10761897
 archery at the 2020 Summer Olympics – women's team,gold,An San,Q107618974,South Korea,South Korea at the 2020 Summer Olympics,female
 archery at the 2020 Summer Olympics – Mixed team,gold,An San,Q107618974,South Korea,South Korea at the 2020 Summer Olympics,female
 archery at the 2020 Summer Olympics – Mixed team,silver,Steve Wijler,Q42361303,Netherlands,Netherlands at the 2020 Summer Olympics,male
-athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,gold,Michael Cherry,Q92777588,United States of America,United States at the 2020 Summer Olympics,NA
 athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,gold,Trevor Stewart,Q107302664,United States of America,United States at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,silver,Ramsey Angela,Q105957190,Netherlands,Netherlands at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,bronze,Zibane Ngozi,Q87916473,Botswana,Botswana at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,bronze,Bayapo Ndori,Q107981836,Botswana,Botswana at the 2020 Summer Olympics,male
+athletics at the 2020 Summer Olympics – men's marathon,silver,Abdi Nageeye,Q4376764,Netherlands,Netherlands at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's 20 kilometres walk,silver,Kōki Ikeda,Q52726382,Japan,Japan at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's 20 kilometres walk,bronze,Toshikazu Yamanishi,Q16611126,Japan,Japan at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's triple jump,silver,Zhu Yaming,Q32365671,People's Republic of China,China at the 2020 Summer Olympics,male
@@ -26,7 +26,6 @@ athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,bronze,C
 athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,bronze,Junelle Bromfield,Q29079569,Jamaica,Jamaica at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,bronze,Stacey-Ann Williams,Q107713051,Jamaica,Jamaica at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – women's high jump,silver,Nicola McDermott,Q36339156,Australia,Australia at the 2020 Summer Olympics,female
-athletics at the 2020 Summer Olympics – women's javelin throw,gold,Liu Shiying,Q92775615,People's Republic of China,China at the 2020 Summer Olympics,NA
 athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,gold,Natalia Kaczmarek,Q50330750,Poland,Poland at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,silver,Anabel Medina,Q106686904,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,bronze,Trevor Stewart,Q107302664,United States of America,United States at the 2020 Summer Olympics,male
@@ -48,12 +47,15 @@ baseball at the 2020 Summer Olympics,bronze,Junior García,Q107598268,Dominican 
 baseball at the 2020 Summer Olympics,bronze,Denyi Reyes,Q72831705,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,male
 baseball at the 2020 Summer Olympics,bronze,Roldani Baldwin,Q107476074,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,male
 baseball at the 2020 Summer Olympics,bronze,Gustavo Núñez,Q107490573,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,male
+basketball at the 2020 Summer Olympics – women's tournament,silver,Nako Motohashi,Q55522649,Japan,Japan at the 2020 Summer Olympics,female
+basketball at the 2020 Summer Olympics – women's tournament,silver,Nanaka Todo,Q107559831,Japan,Japan at the 2020 Summer Olympics,female
 boxing at the 2020 Summer Olympics – men's flyweight,silver,Carlo Paalam,Q106363572,Philippines,Philippines at the 2020 Summer Olympics,male
 boxing at the 2020 Summer Olympics – men's flyweight,bronze,Ryomei Tanaka,Q106480024,Japan,Japan at the 2020 Summer Olympics,male
 boxing at the 2020 Summer Olympics – men's featherweight,silver,Duke Ragan,Q38247286,United States of America,United States at the 2020 Summer Olympics,male
 boxing at the 2020 Summer Olympics – men's featherweight,bronze,Samuel Takyi,Q107675127,Ghana,Ghana at the 2020 Summer Olympics,male
 boxing at the 2020 Summer Olympics – men's middleweight,gold,Hebert Conceição,Q68101629,Brazil,Brazil at the 2020 Summer Olympics,male
 boxing at the 2020 Summer Olympics – men's light heavyweight,bronze,Loren Alfonso,Q64964890,Azerbaijan,Azerbaijan at the 2020 Summer Olympics,male
+boxing at the 2020 Summer Olympics – men's super heavyweight,silver,Richard Torrez,Q107383093,United States of America,United States at the 2020 Summer Olympics,male
 boxing at the 2020 Summer Olympics – women's flyweight,silver,Buse Naz Çakıroğlu,Q64910596,Turkey,Turkey at the 2020 Summer Olympics,female
 boxing at the 2020 Summer Olympics – women's flyweight,bronze,Huang Hsiao-wen,Q70709069,Taiwan,Chinese Taipei at the 2020 Summer Olympics,female
 boxing at the 2020 Summer Olympics – women's featherweight,bronze,Karriss Artingstall,Q70703343,United Kingdom,Great Britain at the 2020 Summer Olympics,female
@@ -69,7 +71,6 @@ cycling at the 2020 Summer Olympics – women's team sprint,gold,Bao Shanju,Q104
 cycling at the 2020 Summer Olympics – women's cross-country,silver,Sina Frei,Q25338319,Switzerland,Switzerland at the 2020 Summer Olympics,female
 cycling at the 2020 Summer Olympics – women's BMX race,bronze,Merel Smulders,Q25935615,Netherlands,Netherlands at the 2020 Summer Olympics,female
 diving at the 2020 Summer Olympics – men's 3 metre springboard,silver,Wang Zongyuan,Q65556274,People's Republic of China,China at the 2020 Summer Olympics,male
-diving at the 2020 Summer Olympics – men's 10 metre platform,silver,Yang Jian,Q1220251,People's Republic of China,China at the 2020 Summer Olympics,NA
 diving at the 2020 Summer Olympics – men's synchronized 3 metre springboard,gold,Wang Zongyuan,Q65556274,People's Republic of China,China at the 2020 Summer Olympics,male
 diving at the 2020 Summer Olympics – women's 10 metre platform,silver,Chen Yuxi,Q65619992,People's Republic of China,China at the 2020 Summer Olympics,female
 diving at the 2020 Summer Olympics – women's synchronized 3 metre springboard,bronze,Lena Hentschel,Q56062891,Germany,Germany at the 2020 Summer Olympics,female
@@ -108,6 +109,7 @@ field hockey at the 2020 Summer Olympics – women's tournament,bronze,Fiona Cra
 football at the 2020 Summer Olympics – women's tournament,bronze,Jane Campbell,Q6151226,United States of America,United States at the 2020 Summer Olympics,NA
 golf at the 2020 Summer Olympics – women's individual,silver,Mone Inami,Q64783571,Japan,Japan at the 2020 Summer Olympics,female
 gymnastics at the 2020 Summer Olympics – men's vault,gold,Shin Jea-hwan,Q107512099,South Korea,South Korea at the 2020 Summer Olympics,male
+gymnastics at the 2020 Summer Olympics – women's rhythmic group all-around,bronze,Daniela Mogurean,Q107243295,Italy,Italy at the 2020 Summer Olympics,female
 judo at the 2020 Summer Olympics – men's 90 kg,bronze,Davlat Bobonov,Q56434431,Uzbekistan,Uzbekistan at the 2020 Summer Olympics,male
 judo at the 2020 Summer Olympics – women's 70 kg,silver,Michaela Polleres,Q52768029,Austria,Austria at the 2020 Summer Olympics,female
 judo at the 2020 Summer Olympics – mixed team event,silver,Shoichiro Mukai,Q28068997,Japan,Japan at the 2020 Summer Olympics,male
@@ -236,6 +238,13 @@ taekwondo at the 2020 Summer Olympics – women's 57 kg,bronze,Lo Chia-ling,Q107
 taekwondo at the 2020 Summer Olympics – women's +67 kg,bronze,Althéa Laurin,Q77977043,France,France at the 2020 Summer Olympics,female
 Triathlon at the 2020 Summer Olympics – Mixed relay,silver,Morgan Pearson,Q99619738,United States of America,United States at the 2020 Summer Olympics,male
 volleyball at the 2020 Summer Olympics – men's tournament,silver,Denis Bogdan,Q107354489,NA,ROC at the 2020 Summer Olympics,male
+volleyball at the 2020 Summer Olympics – women's tournament,silver,Ana Cristina de Souza,Q107406911,Brazil,Brazil at the 2020 Summer Olympics,female
+water polo at the 2020 Summer Olympics – men's tournament,silver,Emmanouil Zerdevas,Q107743819,Greece,Greece at the 2020 Summer Olympics,male
+water polo at the 2020 Summer Olympics – men's tournament,silver,Dimitrios Skoumpakis,Q107739516,Greece,Greece at the 2020 Summer Olympics,male
+water polo at the 2020 Summer Olympics – men's tournament,silver,Alexandros Papanastasiou (water polo),Q107920950,Greece,Greece at the 2020 Summer Olympics,male
+water polo at the 2020 Summer Olympics – men's tournament,silver,Konstantinos Gkiouvetsis,Q107743695,Greece,Greece at the 2020 Summer Olympics,male
+water polo at the 2020 Summer Olympics – men's tournament,bronze,Szilárd Jansik,Q107743708,Hungary,Hungary at the 2020 Summer Olympics,male
+water polo at the 2020 Summer Olympics – men's tournament,bronze,Soma Vogel,Q107985998,Hungary,Hungary at the 2020 Summer Olympics,male
 water polo at the 2020 Summer Olympics – women's tournament,gold,Paige Hauschild,Q97065376,United States of America,United States at the 2020 Summer Olympics,female
 water polo at the 2020 Summer Olympics – women's tournament,gold,Jamie Neushul,Q96748009,United States of America,United States at the 2020 Summer Olympics,female
 weightlifting at the 2020 Summer Olympics – men's 96 kg,gold,Faris Ibrahim,Q27064038,Qatar,Qatar at the 2020 Summer Olympics,male

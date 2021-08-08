@@ -831,7 +831,7 @@ library("dplyr", warn.conflicts = FALSE)
 library("leaflet")
 
 all_medalists_df <- readr::read_csv("medalists_all.csv", show_col_types = FALSE) %>% 
-  dplyr::filter(is.na(lon)==FALSE)
+  dplyr::filter(is.na(lon)==FALSE) 
 # %>% 
 #   dplyr::mutate(img_filename = purrr::map_chr(.x = medalist_wikidata_id,
 #                                               function(x) {tw_get_image(id = x)[1]})) 
