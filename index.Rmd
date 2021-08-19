@@ -360,11 +360,17 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
            "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_57_kg", "bronze", "/wiki/Evelina_Nikolova", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
            "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_62_kg", "bronze", "/wiki/Taybe_Yusein", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
            "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_68_kg", "bronze", "/wiki/Meerim_Zhumanazarova", "/wiki/Kyrgyzstan_at_the_2020_Summer_Olympics",
-                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg", "bronze", "/wiki/Zhou_Qian", "/wiki/China_at_the_2020_Summer_Olympics"
+                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg", "bronze", "/wiki/Zhou_Qian", "/wiki/China_at_the_2020_Summer_Olympics",
+           
+           # fix Barshim moved to separate row
+           
+           "/wiki/Athletics_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_high_jump", "gold", "/wiki/Mutaz_Essa_Barshim", "/wiki/Qatar_at_the_2020_Summer_Olympics"
+           
                 )
 
 all_medalists_df <- bind_rows(all_medalists_df_pre,
                               double_medals) %>% 
+  dplyr::filter(stringr::str_detect(string = medalist_link,pattern = "#", negate = TRUE)) %>% 
   distinct(event_link, medalist_link, .keep_all = TRUE)
 
 
