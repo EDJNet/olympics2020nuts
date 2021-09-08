@@ -364,7 +364,9 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
            
            # fix Barshim moved to separate row
            
-           "/wiki/Athletics_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_high_jump", "gold", "/wiki/Mutaz_Essa_Barshim", "/wiki/Qatar_at_the_2020_Summer_Olympics"
+           "/wiki/Athletics_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_high_jump", "gold", "/wiki/Mutaz_Essa_Barshim", "/wiki/Qatar_at_the_2020_Summer_Olympics",
+           
+           
            
                 )
 
