@@ -1,54 +1,37 @@
 event_name,medal,medalist_name,medalist_wikidata_id,country_medal,delegation_name,sex_or_gender
 archery at the 2020 Summer Olympics – mixed team,silver,Steve Wijler,Q42361303,Netherlands,Netherlands at the 2020 Summer Olympics,male
-athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,gold,Trevor Stewart,Q107302664,United States of America,United States at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,bronze,Zibane Ngozi,Q87916473,Botswana,Botswana at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's 4 × 400 metres relay,bronze,Bayapo Ndori,Q107981836,Botswana,Botswana at the 2020 Summer Olympics,male
 athletics at the 2020 Summer Olympics – men's discus throw,silver,Simon Pettersson,Q34998110,Sweden,Sweden at the 2020 Summer Olympics,male
-athletics at the 2020 Summer Olympics – women's 5000 metres,bronze,Gudaf Tsegay,Q16224285,Ethiopia,Ethiopia at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – women's 3000 metres steeplechase,bronze,Hyvin Kiyeng Jepkemoi,Q16558877,Kenya,Kenya at the 2020 Summer Olympics,female
-athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,gold,Kaylin Whitney,Q17379658,United States of America,United States at the 2020 Summer Olympics,female
-athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,silver,Natalia Kaczmarek,Q50330750,Poland,Poland at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,bronze,Roneisha McGregor,Q57314742,Jamaica,Jamaica at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,bronze,Candice McLeod,Q107360805,Jamaica,Jamaica at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,bronze,Junelle Bromfield,Q29079569,Jamaica,Jamaica at the 2020 Summer Olympics,female
 athletics at the 2020 Summer Olympics – women's 4 × 400 metres relay,bronze,Stacey-Ann Williams,Q107713051,Jamaica,Jamaica at the 2020 Summer Olympics,female
-athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,gold,Natalia Kaczmarek,Q50330750,Poland,Poland at the 2020 Summer Olympics,female
-athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,silver,NA,Q107713077,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,NA
 athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,silver,Anabel Medina,Q106686904,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,female
-athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,silver,NA,Q107736812,Dominican Republic,Dominican Republic at the 2020 Summer Olympics,NA
-athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,bronze,Trevor Stewart,Q107302664,United States of America,United States at the 2020 Summer Olympics,male
-athletics at the 2020 Summer Olympics – mixed 4 × 400 metres relay,bronze,Kaylin Whitney,Q17379658,United States of America,United States at the 2020 Summer Olympics,female
-boxing at the 2020 Summer Olympics – women's featherweight,bronze,Karriss Artingstall,Q70703343,United Kingdom,Great Britain at the 2020 Summer Olympics,female
 canoeing at the 2020 Summer Olympics – women's C-2 500 metres,bronze,Katie Vincent,Q39081515,Canada,Canada at the 2020 Summer Olympics,female
 cycling at the 2020 Summer Olympics – women's cross-country,silver,Sina Frei,Q25338319,Switzerland,Switzerland at the 2020 Summer Olympics,female
-diving at the 2020 Summer Olympics – women's 3 metre springboard,bronze,NA,Q107354105,United States of America,United States at the 2020 Summer Olympics,NA
 diving at the 2020 Summer Olympics – women's synchronized 3 metre springboard,bronze,Lena Hentschel,Q56062891,Germany,Germany at the 2020 Summer Olympics,female
 equestrian at the 2020 Summer Olympics – individual dressage,gold,Jessica von Bredow-Werndl,Q16752978,Germany,Germany at the 2020 Summer Olympics,female
 equestrian at the 2020 Summer Olympics – team dressage,gold,Jessica von Bredow-Werndl,Q16752978,Germany,Germany at the 2020 Summer Olympics,female
-equestrian at the 2020 Summer Olympics – individual eventing,silver,Tom McEwen,Q107392183,United Kingdom,Great Britain at the 2020 Summer Olympics,male
 equestrian at the 2020 Summer Olympics – team eventing,gold,Laura Collett,Q107571009,United Kingdom,Great Britain at the 2020 Summer Olympics,female
-equestrian at the 2020 Summer Olympics – team eventing,gold,Tom McEwen,Q107392183,United Kingdom,Great Britain at the 2020 Summer Olympics,male
 fencing at the 2020 Summer Olympics – men's team foil,bronze,Nick Itkin,Q86453232,United States of America,United States at the 2020 Summer Olympics,male
 field hockey at the 2020 Summer Olympics – men's tournament,silver,Trent Mitton,Q7838433,Australia,Australia at the 2020 Summer Olympics,male
 field hockey at the 2020 Summer Olympics – women's tournament,bronze,Isabelle Petter,Q64650812,United Kingdom,Great Britain at the 2020 Summer Olympics,female
-football at the 2020 Summer Olympics – men's tournament,gold,NA,Q96391037,Brazil,Brazil at the 2020 Summer Olympics,NA
-gymnastics at the 2020 Summer Olympics – women's rhythmic group all-around,silver,NA,Q107173290,NA,ROC at the 2020 Summer Olympics,NA
+football at the 2020 Summer Olympics – men's tournament,silver,Pau Torres,Q28005422,Spain,Spain at the 2020 Summer Olympics,NA
 judo at the 2020 Summer Olympics – women's 70 kg,silver,Michaela Polleres,Q52768029,Austria,Austria at the 2020 Summer Olympics,female
 judo at the 2020 Summer Olympics – mixed team event,bronze,Johannes Frey,Q106676575,Germany,Germany at the 2020 Summer Olympics,male
 judo at the 2020 Summer Olympics – mixed team event,bronze,Giovanna Scoccimarro,Q29524740,Germany,Germany at the 2020 Summer Olympics,female
 karate at the 2020 Summer Olympics – women's 61 kg,bronze,Giana Mohamed Farouk,Q24262923,Egypt,Egypt at the 2020 Summer Olympics,female
-NA,gold,Feryal Abdelaziz,Q86833068,Egypt,Egypt at the 2020 Summer Olympics,female
+karate at the 2020 Summer Olympics – women's +61 kg,gold,Feryal Abdelaziz,Q86833068,Egypt,Egypt at the 2020 Summer Olympics,female
 modern pentathlon at the 2020 Summer Olympics – men's,silver,Ahmed El-Gendy,Q99232188,Egypt,Egypt at the 2020 Summer Olympics,male
 rowing at the 2020 Summer Olympics – men's quadruple sculls,bronze,Jack Cleary,Q106924541,Australia,Australia at the 2020 Summer Olympics,male
 rowing at the 2020 Summer Olympics – men's quadruple sculls,bronze,Luke Letcher,Q66058217,Australia,Australia at the 2020 Summer Olympics,male
-rowing at the 2020 Summer Olympics – men's eight,bronze,James Rudkin,Q61708029,United Kingdom,Great Britain at the 2020 Summer Olympics,male
-rowing at the 2020 Summer Olympics – lightweight men's double sculls,gold,Fintan McCarthy,Q61722216,Ireland,Ireland at the 2020 Summer Olympics,male
 rowing at the 2020 Summer Olympics – women's double sculls,bronze,Roos de Jong,Q61712453,Netherlands,Netherlands at the 2020 Summer Olympics,female
 rowing at the 2020 Summer Olympics – women's double sculls,bronze,Lisa Scheenaard,Q47465462,Netherlands,Netherlands at the 2020 Summer Olympics,female
 rowing at the 2020 Summer Olympics – women's quadruple sculls,gold,Chen Yunxia,Q66934283,People's Republic of China,China at the 2020 Summer Olympics,female
 rowing at the 2020 Summer Olympics – women's quadruple sculls,gold,Cui Xiaotong,Q47462831,People's Republic of China,China at the 2020 Summer Olympics,female
 rowing at the 2020 Summer Olympics – women's quadruple sculls,bronze,Caitlin Cronin,Q61751125,Australia,Australia at the 2020 Summer Olympics,female
-rowing at the 2020 Summer Olympics – women's coxless pair,silver,NA,Q107696671,NA,ROC at the 2020 Summer Olympics,NA
 rowing at the 2020 Summer Olympics – women's coxless four,silver,Veronique Meester,Q47465546,Netherlands,Netherlands at the 2020 Summer Olympics,female
 rowing at the 2020 Summer Olympics – women's eight,bronze,Ju Rui,Q47462825,People's Republic of China,China at the 2020 Summer Olympics,female
 rowing at the 2020 Summer Olympics – women's eight,bronze,Li Jingjing,Q107636283,People's Republic of China,China at the 2020 Summer Olympics,female
@@ -62,8 +45,6 @@ rugby sevens at the 2020 Summer Olympics – men's tournament,gold,Kalione Nasok
 rugby sevens at the 2020 Summer Olympics – men's tournament,gold,Asaeli Tuivuaka,Q107659092,Fiji,Fiji at the 2020 Summer Olympics,male
 rugby sevens at the 2020 Summer Olympics – men's tournament,gold,Josua Vakurunabili,Q107659107,Fiji,Fiji at the 2020 Summer Olympics,male
 rugby sevens at the 2020 Summer Olympics – men's tournament,silver,Ngarohi McGarvey-Black,Q107395749,New Zealand,New Zealand at the 2020 Summer Olympics,male
-rugby sevens at the 2020 Summer Olympics – women's tournament,silver,NA,NA,France,France at the 2020 Summer Olympics,NA
-rugby sevens at the 2020 Summer Olympics – women's tournament,silver,NA,NA,France,France at the 2020 Summer Olympics,NA
 rugby sevens at the 2020 Summer Olympics – women's tournament,bronze,Lavena Cavuru,Q107718897,Fiji,Fiji at the 2020 Summer Olympics,female
 rugby sevens at the 2020 Summer Olympics – women's tournament,bronze,Raijieli Daveau,Q26250582,Fiji,Fiji at the 2020 Summer Olympics,female
 rugby sevens at the 2020 Summer Olympics – women's tournament,bronze,Sesenieli Donu,Q107721862,Fiji,Fiji at the 2020 Summer Olympics,female
@@ -72,19 +53,12 @@ rugby sevens at the 2020 Summer Olympics – women's tournament,bronze,Ana Naima
 rugby sevens at the 2020 Summer Olympics – women's tournament,bronze,Aloesi Nakoci,Q107721858,Fiji,Fiji at the 2020 Summer Olympics,female
 rugby sevens at the 2020 Summer Olympics – women's tournament,bronze,Vasiti Solikoviti,Q107721883,Fiji,Fiji at the 2020 Summer Olympics,female
 rugby sevens at the 2020 Summer Olympics – women's tournament,bronze,Reapi Uluinasau,Q107718848,Fiji,Fiji at the 2020 Summer Olympics,female
-sailing at the 2020 Summer Olympics – Nacra 17,silver,NA,NA,United Kingdom,Great Britain at the 2020 Summer Olympics,NA
 shooting at the 2020 Summer Olympics – women's 10 metre air pistol,bronze,Jiang Ranxin,Q56486658,People's Republic of China,China at the 2020 Summer Olympics,female
 shooting at the 2020 Summer Olympics – mixed 10 metre air pistol,gold,Jiang Ranxin,Q56486658,People's Republic of China,China at the 2020 Summer Olympics,female
-taekwondo at the 2020 Summer Olympics – women's +67 kg,bronze,Althéa Laurin,Q77977043,France,France at the 2020 Summer Olympics,female
 water polo at the 2020 Summer Olympics – men's tournament,silver,Emmanouil Zerdevas,Q107743819,Greece,Greece at the 2020 Summer Olympics,male
 water polo at the 2020 Summer Olympics – men's tournament,silver,Konstantinos Gkiouvetsis,Q107743695,Greece,Greece at the 2020 Summer Olympics,male
-water polo at the 2020 Summer Olympics – men's tournament,bronze,NA,Q107743708,Hungary,Hungary at the 2020 Summer Olympics,NA
-water polo at the 2020 Summer Olympics – women's tournament,bronze,NA,Q107719197,Hungary,Hungary at the 2020 Summer Olympics,NA
-boxing at the 2020 Summer Olympics – men's flyweight,bronze,Saken Bibossinov,Q68045840,Kazakhstan,Kazakhstan at the 2020 Summer Olympics,male
-judo at the 2020 Summer Olympics – mixed team event,bronze,Raz Hershko,Q106353796,Israel,Israel at the 2020 Summer Olympics,female
 judo at the 2020 Summer Olympics – mixed team event,bronze,Li Kochman,Q64816214,Israel,Israel at the 2020 Summer Olympics,male
-NA,bronze,Abdelrahman Al-Masatfa,Q107198429,Jordan,Jordan at the 2020 Summer Olympics,male
-NA,bronze,Uğur Aktaş,Q30112512,Turkey,Turkey at the 2020 Summer Olympics,NA
+karate at the 2020 Summer Olympics – men's 67 kg,bronze,Abdelrahman Al-Masatfa,Q107198429,Jordan,Jordan at the 2020 Summer Olympics,male
 taekwondo at the 2020 Summer Olympics – men's 80 kg,bronze,Seif Eissa,Q18043783,Egypt,Egypt at the 2020 Summer Olympics,male
 wrestling at the 2020 Summer Olympics – men's Greco-Roman 67 kg,bronze,Mohamed Ibrahim El-Sayed,Q23764813,Egypt,Egypt at the 2020 Summer Olympics,male
-NA,bronze,Sarah Hildebrandt,Q18434125,United States of America,United States at the 2020 Summer Olympics,female
+wrestling at the 2020 Summer Olympics – women's freestyle 50 kg,bronze,Sarah Hildebrandt,Q18434125,United States of America,United States at the 2020 Summer Olympics,female

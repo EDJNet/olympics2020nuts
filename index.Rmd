@@ -11,6 +11,8 @@ output:
   distill::distill_article:
     toc: true
     toc_depth: 3
+    includes:      
+      in_header: header.html
 ---
 
 
@@ -275,11 +277,14 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
                               "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_welterweight", "bronze", "/wiki/Aidan_Walsh_(boxer)", "/wiki/Ireland_at_the_2020_Summer_Olympics",
                               "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_middleweight", "bronze", "/wiki/Gleb_Bakshi", "/wiki/ROC_at_the_2020_Summer_Olympics", 
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_light_heavyweight", "bronze", "/wiki/Imam_Khataev", "/wiki/ROC_at_the_2020_Summer_Olympics",
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_heavyweight", "bronze", "/wiki/Kamshybek_Kunkabayev", "/wiki/Kazakhstan_at_the_2020_Summer_Olympics",
+                                                  "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_heavyweight", "bronze", "/wiki/Abner_Teixeira", "/wiki/Brazil_at_the_2020_Summer_Olympics",
+                         
+"/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_super_heavyweight", "bronze", "/wiki/Kamshybek_Kunkabayev", "/wiki/Kazakhstan_at_the_2020_Summer_Olympics",
                          
                          
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_flyweight", "bronze", "/wiki/Tsukimi_Namiki", "/wiki/Japan_at_the_2020_Summer_Olympics",
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Karriss_Artingstall", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Irma_Testa", "/wiki/Italy_at_the_2020_Summer_Olympics",
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_lightweight", "bronze", "/wiki/Mira_Potkonen", "/wiki/Finland_at_the_2020_Summer_Olympics",
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_welterweight", "bronze", "/wiki/Oshae_Jones", "/wiki/United_States_at_the_2020_Summer_Olympics",
                          "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_middleweight", "bronze", "/wiki/Zemfira_Magomedalieva", "/wiki/ROC_at_the_2020_Summer_Olympics",
@@ -318,7 +323,7 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_kata", "bronze", "/wiki/Ali_Sofuo%C4%9Flu", "/wiki/Turkey_at_the_2020_Summer_Olympics",
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_67_kg", "bronze", "/wiki/Abdelrahman_Al-Masatfa", "/wiki/Jordan_at_the_2020_Summer_Olympics",
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_75_kg", "bronze", "/wiki/Stanislav_Horuna", "/wiki/Ukraine_at_the_2020_Summer_Olympics",
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B75_kg", "bronze", "/wiki/U%C4%9Fur_Akta%C5%9F", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
+               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B75_kg", "bronze", "/wiki/U%C4%9Fur_Akta%C5%9F_(karateka)", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
                
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_kata", "bronze", "/wiki/Viviana_Bottaro", "/wiki/Italy_at_the_2020_Summer_Olympics",
                "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_55_kg", "bronze", "/wiki/Wen_Tzu-yun", "/wiki/Chinese_Taipei_at_the_2020_Summer_Olympics",
@@ -366,8 +371,14 @@ double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegatio
            
            "/wiki/Athletics_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_high_jump", "gold", "/wiki/Mutaz_Essa_Barshim", "/wiki/Qatar_at_the_2020_Summer_Olympics",
            
-           
-           
+      # fix missing competition for whatever reason
+
+           "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "gold", "/wiki/Isaquias_Queiroz", "/wiki/Brazil_at_the_2016_Summer_Olympics",
+           "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "silver", "/wiki/Liu_Hao_(canoeist)", "/wiki/China_at_the_2016_Summer_Olympics",
+           "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "bronze", "/wiki/Serghei_Tarnovschi", "/wiki/Moldova_at_the_2016_Summer_Olympics",
+
+
+
                 )
 
 all_medalists_df <- bind_rows(all_medalists_df_pre,
@@ -479,17 +490,46 @@ I will keep the cached json files in the repo, so you don't have to download the
 all_medalists_wd_df <- all_medalists_df %>% 
   dplyr::mutate(medalist_wikidata_id = o2020_get_wikidata_from_link(medalist_link),
                 event_wikidata_id = o2020_get_wikidata_from_link(event_link),
-                delegation_wikidata_id = o2020_get_wikidata_from_link(delegation_link)) 
+                delegation_wikidata_id = o2020_get_wikidata_from_link(delegation_link)) %>% 
+  dplyr::mutate(event_link = paste0("https://en.wikipedia.org", event_link),
+                medalist_link = paste0("https://en.wikipedia.org", medalist_link),
+                delegation_link = paste0("https://en.wikipedia.org", delegation_link))
+
+```
+
+```{r eval = FALSE}
+# due to frequent failures, consider something like this at first run
+while (length(fs::dir_ls("wikipedia_medalists_json")<2600)) {
+  
+  try(all_medalists_wd_df <- all_medalists_df %>% 
+        dplyr::mutate(medalist_wikidata_id = o2020_get_wikidata_from_link(medalist_link),
+                      event_wikidata_id = o2020_get_wikidata_from_link(event_link),
+                      delegation_wikidata_id = o2020_get_wikidata_from_link(delegation_link)) %>% 
+        dplyr::mutate(event_link = paste0("https://en.wikipedia.org", event_link),
+                      medalist_link = paste0("https://en.wikipedia.org", medalist_link),
+                      delegation_link = paste0("https://en.wikipedia.org", delegation_link)))
+}
 
 ```
 
 
-```{r}
+
+```{r all_medalists_wd_df table}
 all_medalists_wd_df %>% 
   dplyr::slice_sample(n = 10) %>% 
   knitr::kable()
 
 ```
+
+Are these *all* Olympics medalists? We now have `r all_medalists_wd_df %>% distinct(medalist_wikidata_id) %>% nrow()` and `r all_medalists_wd_df %>% distinct(event_wikidata_id) %>% nrow()` events, which correspond to the figure given in the opening line of the [Wikipedia page used as the source for this endeavour](https://en.wikipedia.org/wiki/List_of_2020_Summer_Olympics_medal_winners).
+
+Apparently, yes. 
+
+```{r}
+
+
+```
+
 
 
 So now we have successfully associated Wikidata identifiers with the relevant Wikipedia pages. Let the Wikidata-based fun begin. 
@@ -912,6 +952,27 @@ leaflet_medals
 ```
 
 You can see this [interactive map in full screen following this link](https://edjnet.github.io/olympics2020nuts/medalists_map.html).
+
+```{r}
+place_of_birth_table <- readr::read_csv("medalists_all.csv", show_col_types = FALSE) %>% 
+  dplyr::distinct(medalist_wikidata_id, lon) %>% 
+  mutate(place_of_birth_coordinates = is.na(lon)==FALSE) %>% 
+  summarise(place_of_birth = sum(is.na(lon)==FALSE), missing_place_of_birth = sum(is.na(lon)==TRUE)) %>% 
+  mutate(share_present = scales::percent(1-(missing_place_of_birth/place_of_birth)))
+
+
+```
+
+
+At last update, place of birth is present for `r place_of_birth_table$share_present` of medalists, so only `r place_of_birth_table$missing_place_of_birth` medalists out of `r place_of_birth_table$place_of_birth+place_of_birth_table$missing_place_of_birth` are missing from this map.
+
+```{r}
+place_of_birth_table %>% 
+  knitr::kable()
+  
+  
+```
+
 
 
 ```{r eval = FALSE}
