@@ -257,9 +257,9 @@ Once these functions are defined, then everything looks super-easy. Here's how t
 ```{r extract tables from local wikipedia page}
 
 all_medalists_df_pre <- purrr::map_dfr(.x = all_medal_tables,
-                                   .f = function(table) {
-                                     o20_get_medals_from_table(table)
-                                   })
+                                       .f = function(table) {
+                                         o20_get_medals_from_table(table)
+                                       })
 
 all_medalists_df_pre$medalist_link[all_medalists_df_pre$medalist_link == "/wiki/Gianmarco_Tamberi"&all_medalists_df_pre$delegation_link=="/wiki/Qatar_at_the_2020_Summer_Olympics"] <- "/wiki/Mutaz_Essa_Barshim"
 
@@ -273,113 +273,113 @@ all_medalists_df_pre$medalist_link[all_medalists_df_pre$medalist_link == "/wiki/
 double_medals <- tibble::tribble(~event_link, ~medal, ~medalist_link, ~delegation_link,
                                  
                                  "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_flyweight", "bronze", "/wiki/Saken_Bibossinov", "/wiki/Kazakhstan_at_the_2020_Summer_Olympics",                             "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_featherweight","bronze", "/wiki/L%C3%A1zaro_%C3%81lvarez", "/wiki/Cuba_at_the_2020_Summer_Olympics",
-                              "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_lightweight", "bronze", "/wiki/Harry_Garside", "/wiki/Australia_at_the_2020_Summer_Olympics",
-                              "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_welterweight", "bronze", "/wiki/Aidan_Walsh_(boxer)", "/wiki/Ireland_at_the_2020_Summer_Olympics",
-                              "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_middleweight", "bronze", "/wiki/Gleb_Bakshi", "/wiki/ROC_at_the_2020_Summer_Olympics", 
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_light_heavyweight", "bronze", "/wiki/Imam_Khataev", "/wiki/ROC_at_the_2020_Summer_Olympics",
-                                                  "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_heavyweight", "bronze", "/wiki/Abner_Teixeira", "/wiki/Brazil_at_the_2020_Summer_Olympics",
-                         
-"/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_super_heavyweight", "bronze", "/wiki/Kamshybek_Kunkabayev", "/wiki/Kazakhstan_at_the_2020_Summer_Olympics",
-                         
-                         
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_flyweight", "bronze", "/wiki/Tsukimi_Namiki", "/wiki/Japan_at_the_2020_Summer_Olympics",
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Karriss_Artingstall", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Irma_Testa", "/wiki/Italy_at_the_2020_Summer_Olympics",
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_lightweight", "bronze", "/wiki/Mira_Potkonen", "/wiki/Finland_at_the_2020_Summer_Olympics",
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_welterweight", "bronze", "/wiki/Oshae_Jones", "/wiki/United_States_at_the_2020_Summer_Olympics",
-                         "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_middleweight", "bronze", "/wiki/Zemfira_Magomedalieva", "/wiki/ROC_at_the_2020_Summer_Olympics",
-                         
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_60_kg", "bronze", "/wiki/Luka_Mkheidze", "/wiki/France_at_the_2020_Summer_Olympics", 
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_66_kg", "bronze", "/wiki/Daniel_Cargnin_(judoka)", "/wiki/Brazil_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_73_kg", "bronze", "/wiki/Tsend-Ochiryn_Tsogtbaatar", "/wiki/Mongolia_at_the_2020_Summer_Olympics", 
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_81_kg", "bronze", "/wiki/Matthias_Casse", "/wiki/Belgium_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_90_kg", "bronze", "/wiki/Kriszti%C3%A1n_T%C3%B3th", "/wiki/Hungary_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_100_kg", "bronze", "/wiki/Niyaz_Ilyasov", "/wiki/ROC_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B100_kg", "bronze", "/wiki/Tamerlan_Bashaev", "/wiki/ROC_at_the_2020_Summer_Olympics",
-                         
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_48_kg", "bronze", "/wiki/Urantsetseg_Munkhbat", "/wiki/Mongolia_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_52_kg", "bronze", "/wiki/Chelsie_Giles", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_57_kg", "bronze", "/wiki/Tsukasa_Yoshida", "/wiki/Japan_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_63_kg", "bronze", "/wiki/Catherine_Beauchemin-Pinard", "/wiki/Canada_at_the_2020_Summer_Olympics", 
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_70_kg", "bronze", "/wiki/Sanne_van_Dijke", "/wiki/Netherlands_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_78_kg", "bronze", "/wiki/Mayra_Aguiar", "/wiki/Brazil_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B78_kg", "bronze", "/wiki/Romane_Dicko", "/wiki/France_at_the_2020_Summer_Olympics",
-                         
-                         
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Tohar_Butbul", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Raz_Hershko", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Li_Kochman", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Inbar_Lanir", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Sagi_Muki", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Timna_Nelson-Levy", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Peter_Paltchik", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Shira_Rishony", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Or_Sasson", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Gili_Sharir", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Baruch_Shmailov", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                         
-                         
-                         
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_kata", "bronze", "/wiki/Ali_Sofuo%C4%9Flu", "/wiki/Turkey_at_the_2020_Summer_Olympics",
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_67_kg", "bronze", "/wiki/Abdelrahman_Al-Masatfa", "/wiki/Jordan_at_the_2020_Summer_Olympics",
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_75_kg", "bronze", "/wiki/Stanislav_Horuna", "/wiki/Ukraine_at_the_2020_Summer_Olympics",
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B75_kg", "bronze", "/wiki/U%C4%9Fur_Akta%C5%9F_(karateka)", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
-               
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_kata", "bronze", "/wiki/Viviana_Bottaro", "/wiki/Italy_at_the_2020_Summer_Olympics",
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_55_kg", "bronze", "/wiki/Wen_Tzu-yun", "/wiki/Chinese_Taipei_at_the_2020_Summer_Olympics",
-               "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_61_kg", "bronze", "/wiki/Merve_%C3%87oban", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
-           "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B61_kg", "bronze", "/wiki/Sofya_Berultseva", "/wiki/Ukraine_at_the_2020_Summer_Olympics", 
-               
-                
-                
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_58_kg", "bronze", "/wiki/Mikhail_Artamonov_(taekwondo)", "/wiki/ROC_at_the_2020_Summer_Olympics",
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_68_kg", "bronze", "/wiki/Zhao_Shuai", "/wiki/China_at_the_2020_Summer_Olympics",
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_80_kg", "bronze", "/wiki/Seif_Eissa", "/wiki/Egypt_at_the_2020_Summer_Olympics",
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B80_kg", "bronze", "/wiki/Rafael_Alba", "/wiki/Cuba_at_the_2020_Summer_Olympics",
-                
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_49_kg", "bronze", "/wiki/Avishag_Semberg", "/wiki/Israel_at_the_2020_Summer_Olympics",
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_57_kg", "bronze", "/wiki/Hatice_K%C3%BCbra_%C4%B0lg%C3%BCn", "/wiki/Turkey_at_the_2020_Summer_Olympics",
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_67_kg", "bronze", "/wiki/Hedaya_Wahba", "/wiki/Egypt_at_the_2020_Summer_Olympics",
-                "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B67_kg", "bronze", "/wiki/Bianca_Walkden", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
-                
-           
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_57_kg", "bronze", "/wiki/Thomas_Gilman", "/wiki/United_States_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_65_kg", "bronze", "/wiki/Bajrang_Punia", "/wiki/India_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_74_kg", "bronze", "/wiki/Bekzod_Abdurakhmonov", "/wiki/Uzbekistan_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_86_kg", "bronze", "/wiki/Myles_Amine", "/wiki/San_Marino_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_97_kg", "bronze", "/wiki/Abraham_Conyedo", "/wiki/Italy_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_125_kg", "bronze", "/wiki/Taha_Akg%C3%BCl", "/wiki/Turkey_at_the_2020_Summer_Olympics",
-           
-           
-           
-           
-                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_60_kg", "bronze", "/wiki/Sergey_Emelin", "/wiki/ROC_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_67_kg", "bronze", "/wiki/Mohamed_Ibrahim_El-Sayed", "/wiki/Egypt_at_the_2020_Summer_Olympics", 
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_77_kg", "bronze", "/wiki/Rafig_Huseynov", "/wiki/Azerbaijan_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_87_kg", "bronze", "/wiki/Zurab_Datunashvili", "/wiki/Serbia_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_97_kg", "bronze", "/wiki/Mohammad_Hadi_Saravi", "/wiki/Iran_at_the_2020_Summer_Olympics",
-                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_130_kg", "bronze", "/wiki/Sergey_Semenov_(wrestler)", "/wiki/ROC_at_the_2020_Summer_Olympics",
-           
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_50_kg", "bronze", "/wiki/Sarah_Hildebrandt", "/wiki/United_States_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_53_kg", "bronze", "/wiki/Bat-Ochiryn_Bolortuyaa", "/wiki/Mongolia_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_57_kg", "bronze", "/wiki/Evelina_Nikolova", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_62_kg", "bronze", "/wiki/Taybe_Yusein", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
-           "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_68_kg", "bronze", "/wiki/Meerim_Zhumanazarova", "/wiki/Kyrgyzstan_at_the_2020_Summer_Olympics",
-                "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg", "bronze", "/wiki/Zhou_Qian", "/wiki/China_at_the_2020_Summer_Olympics",
-           
-           # fix Barshim moved to separate row
-           
-           "/wiki/Athletics_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_high_jump", "gold", "/wiki/Mutaz_Essa_Barshim", "/wiki/Qatar_at_the_2020_Summer_Olympics",
-           
-      # fix missing competition for whatever reason
-
-           "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "gold", "/wiki/Isaquias_Queiroz", "/wiki/Brazil_at_the_2016_Summer_Olympics",
-           "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "silver", "/wiki/Liu_Hao_(canoeist)", "/wiki/China_at_the_2016_Summer_Olympics",
-           "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "bronze", "/wiki/Serghei_Tarnovschi", "/wiki/Moldova_at_the_2016_Summer_Olympics",
-
-
-
-                )
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_lightweight", "bronze", "/wiki/Harry_Garside", "/wiki/Australia_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_welterweight", "bronze", "/wiki/Aidan_Walsh_(boxer)", "/wiki/Ireland_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_middleweight", "bronze", "/wiki/Gleb_Bakshi", "/wiki/ROC_at_the_2020_Summer_Olympics", 
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_light_heavyweight", "bronze", "/wiki/Imam_Khataev", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_heavyweight", "bronze", "/wiki/Abner_Teixeira", "/wiki/Brazil_at_the_2020_Summer_Olympics",
+                                 
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_super_heavyweight", "bronze", "/wiki/Kamshybek_Kunkabayev", "/wiki/Kazakhstan_at_the_2020_Summer_Olympics",
+                                 
+                                 
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_flyweight", "bronze", "/wiki/Tsukimi_Namiki", "/wiki/Japan_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Karriss_Artingstall", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_featherweight", "bronze", "/wiki/Irma_Testa", "/wiki/Italy_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_lightweight", "bronze", "/wiki/Mira_Potkonen", "/wiki/Finland_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_welterweight", "bronze", "/wiki/Oshae_Jones", "/wiki/United_States_at_the_2020_Summer_Olympics",
+                                 "/wiki/Boxing_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_middleweight", "bronze", "/wiki/Zemfira_Magomedalieva", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                                 
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_60_kg", "bronze", "/wiki/Luka_Mkheidze", "/wiki/France_at_the_2020_Summer_Olympics", 
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_66_kg", "bronze", "/wiki/Daniel_Cargnin_(judoka)", "/wiki/Brazil_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_73_kg", "bronze", "/wiki/Tsend-Ochiryn_Tsogtbaatar", "/wiki/Mongolia_at_the_2020_Summer_Olympics", 
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_81_kg", "bronze", "/wiki/Matthias_Casse", "/wiki/Belgium_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_90_kg", "bronze", "/wiki/Kriszti%C3%A1n_T%C3%B3th", "/wiki/Hungary_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_100_kg", "bronze", "/wiki/Niyaz_Ilyasov", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B100_kg", "bronze", "/wiki/Tamerlan_Bashaev", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                                 
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_48_kg", "bronze", "/wiki/Urantsetseg_Munkhbat", "/wiki/Mongolia_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_52_kg", "bronze", "/wiki/Chelsie_Giles", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_57_kg", "bronze", "/wiki/Tsukasa_Yoshida", "/wiki/Japan_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_63_kg", "bronze", "/wiki/Catherine_Beauchemin-Pinard", "/wiki/Canada_at_the_2020_Summer_Olympics", 
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_70_kg", "bronze", "/wiki/Sanne_van_Dijke", "/wiki/Netherlands_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_78_kg", "bronze", "/wiki/Mayra_Aguiar", "/wiki/Brazil_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B78_kg", "bronze", "/wiki/Romane_Dicko", "/wiki/France_at_the_2020_Summer_Olympics",
+                                 
+                                 
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Tohar_Butbul", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Raz_Hershko", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Li_Kochman", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Inbar_Lanir", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Sagi_Muki", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Timna_Nelson-Levy", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Peter_Paltchik", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Shira_Rishony", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Or_Sasson", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Gili_Sharir", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Judo_at_the_2020_Summer_Olympics_%E2%80%93_Mixed_team", "bronze", "/wiki/Baruch_Shmailov", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 
+                                 
+                                 
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_kata", "bronze", "/wiki/Ali_Sofuo%C4%9Flu", "/wiki/Turkey_at_the_2020_Summer_Olympics",
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_67_kg", "bronze", "/wiki/Abdelrahman_Al-Masatfa", "/wiki/Jordan_at_the_2020_Summer_Olympics",
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_75_kg", "bronze", "/wiki/Stanislav_Horuna", "/wiki/Ukraine_at_the_2020_Summer_Olympics",
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B75_kg", "bronze", "/wiki/U%C4%9Fur_Akta%C5%9F_(karateka)", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
+                                 
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_kata", "bronze", "/wiki/Viviana_Bottaro", "/wiki/Italy_at_the_2020_Summer_Olympics",
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_55_kg", "bronze", "/wiki/Wen_Tzu-yun", "/wiki/Chinese_Taipei_at_the_2020_Summer_Olympics",
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_61_kg", "bronze", "/wiki/Merve_%C3%87oban", "/wiki/Turkey_at_the_2020_Summer_Olympics", 
+                                 "/wiki/Karate_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B61_kg", "bronze", "/wiki/Sofya_Berultseva", "/wiki/Ukraine_at_the_2020_Summer_Olympics", 
+                                 
+                                 
+                                 
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_58_kg", "bronze", "/wiki/Mikhail_Artamonov_(taekwondo)", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_68_kg", "bronze", "/wiki/Zhao_Shuai", "/wiki/China_at_the_2020_Summer_Olympics",
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_80_kg", "bronze", "/wiki/Seif_Eissa", "/wiki/Egypt_at_the_2020_Summer_Olympics",
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_%2B80_kg", "bronze", "/wiki/Rafael_Alba", "/wiki/Cuba_at_the_2020_Summer_Olympics",
+                                 
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_49_kg", "bronze", "/wiki/Avishag_Semberg", "/wiki/Israel_at_the_2020_Summer_Olympics",
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_57_kg", "bronze", "/wiki/Hatice_K%C3%BCbra_%C4%B0lg%C3%BCn", "/wiki/Turkey_at_the_2020_Summer_Olympics",
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_67_kg", "bronze", "/wiki/Hedaya_Wahba", "/wiki/Egypt_at_the_2020_Summer_Olympics",
+                                 "/wiki/Taekwondo_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_%2B67_kg", "bronze", "/wiki/Bianca_Walkden", "/wiki/Great_Britain_at_the_2020_Summer_Olympics",
+                                 
+                                 
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_57_kg", "bronze", "/wiki/Thomas_Gilman", "/wiki/United_States_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_65_kg", "bronze", "/wiki/Bajrang_Punia", "/wiki/India_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_74_kg", "bronze", "/wiki/Bekzod_Abdurakhmonov", "/wiki/Uzbekistan_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_86_kg", "bronze", "/wiki/Myles_Amine", "/wiki/San_Marino_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_97_kg", "bronze", "/wiki/Abraham_Conyedo", "/wiki/Italy_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_freestyle_125_kg", "bronze", "/wiki/Taha_Akg%C3%BCl", "/wiki/Turkey_at_the_2020_Summer_Olympics",
+                                 
+                                 
+                                 
+                                 
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_60_kg", "bronze", "/wiki/Sergey_Emelin", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_67_kg", "bronze", "/wiki/Mohamed_Ibrahim_El-Sayed", "/wiki/Egypt_at_the_2020_Summer_Olympics", 
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_77_kg", "bronze", "/wiki/Rafig_Huseynov", "/wiki/Azerbaijan_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_87_kg", "bronze", "/wiki/Zurab_Datunashvili", "/wiki/Serbia_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_97_kg", "bronze", "/wiki/Mohammad_Hadi_Saravi", "/wiki/Iran_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_Greco-Roman_130_kg", "bronze", "/wiki/Sergey_Semenov_(wrestler)", "/wiki/ROC_at_the_2020_Summer_Olympics",
+                                 
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_50_kg", "bronze", "/wiki/Sarah_Hildebrandt", "/wiki/United_States_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_53_kg", "bronze", "/wiki/Bat-Ochiryn_Bolortuyaa", "/wiki/Mongolia_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_57_kg", "bronze", "/wiki/Evelina_Nikolova", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_62_kg", "bronze", "/wiki/Taybe_Yusein", "/wiki/Bulgaria_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_68_kg", "bronze", "/wiki/Meerim_Zhumanazarova", "/wiki/Kyrgyzstan_at_the_2020_Summer_Olympics",
+                                 "/wiki/Wrestling_at_the_2020_Summer_Olympics_%E2%80%93_Women%27s_freestyle_76_kg", "bronze", "/wiki/Zhou_Qian", "/wiki/China_at_the_2020_Summer_Olympics",
+                                 
+                                 # fix Barshim moved to separate row
+                                 
+                                 "/wiki/Athletics_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_high_jump", "gold", "/wiki/Mutaz_Essa_Barshim", "/wiki/Qatar_at_the_2020_Summer_Olympics",
+                                 
+                                 # fix missing competition for whatever reason
+                                 
+                                 "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "gold", "/wiki/Isaquias_Queiroz", "/wiki/Brazil_at_the_2016_Summer_Olympics",
+                                 "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "silver", "/wiki/Liu_Hao_(canoeist)", "/wiki/China_at_the_2016_Summer_Olympics",
+                                 "/wiki/Canoeing_at_the_2020_Summer_Olympics_%E2%80%93_Men%27s_C-1_1000_metres", "bronze", "/wiki/Serghei_Tarnovschi", "/wiki/Moldova_at_the_2016_Summer_Olympics",
+                                 
+                                 
+                                 
+)
 
 all_medalists_df <- bind_rows(all_medalists_df_pre,
                               double_medals) %>% 
@@ -395,7 +395,7 @@ all_medalists_df <- bind_rows(all_medalists_df_pre,
 # nrow(all_medalists_df_pre)+nrow(double_medals)
 
 
- 
+
 
 
 all_medalists_df %>% 
@@ -419,13 +419,13 @@ fs::dir_create("wikipedia_medalists_json")
 
 
 wiki_api_links <- stringr::str_c("https://en.wikipedia.org/w/api.php?action=query&redirects=true&prop=pageprops&titles=",
-                                            stringr::str_remove(all_medalists_df$medalist_link, "/wiki/"),
-                                               "&format=json")
+                                 stringr::str_remove(all_medalists_df$medalist_link, "/wiki/"),
+                                 "&format=json")
 
 local_json_files <- fs::path("wikipedia_medalists_json", 
-                        all_medalists_df$medalist_link %>%
-                          fs::path_file() %>%
-                          paste0(., ".json"))
+                             all_medalists_df$medalist_link %>%
+                               fs::path_file() %>%
+                               paste0(., ".json"))
 
 
 sample(wiki_api_links, size = 1)
@@ -541,37 +541,45 @@ Now that we have a Wikidata id, we're on a downward slope to get a lot more data
 ```{r}
 all_medalists_with_wd_details_df <- all_medalists_wd_df %>% 
   mutate(medalist_name = tw_get_label(medalist_wikidata_id),
-    place_of_birth_wikidata_id = tw_get_property_same_length(id = medalist_wikidata_id,
+         place_of_birth_wikidata_id = tw_get_property_same_length(id = medalist_wikidata_id,
                                                                   p = "P19",
-                                                                  only_first = TRUE), 
+                                                                  only_first = TRUE,
+                                                                  preferred = TRUE), 
          date_of_birth = tw_get_property_same_length(id = medalist_wikidata_id,
                                                      p = "P569",
-                                                     only_first = TRUE), 
-    event_sport_wikidata_id = tw_get_property_same_length(id = event_wikidata_id,
-                                                                  p = "P361",
-                                                                  only_first = TRUE),
-        event_part_of_wikidata_id = tw_get_property_same_length(id = event_wikidata_id,
-                                                                  p = "P641",
-                                                                  only_first = TRUE),
+                                                     only_first = TRUE,
+                                                     preferred = TRUE), 
+         event_sport_wikidata_id = tw_get_property_same_length(id = event_wikidata_id,
+                                                               p = "P361",
+                                                               only_first = TRUE,
+                                                               preferred = TRUE),
+         event_part_of_wikidata_id = tw_get_property_same_length(id = event_wikidata_id,
+                                                                 p = "P641",
+                                                                 only_first = TRUE,
+                                                                 preferred = TRUE),
          event_name = tw_get_label(event_wikidata_id),
          delegation_name = tw_get_label(delegation_wikidata_id), 
          sex_or_gender_wikidata_id = tw_get_property_same_length(id = medalist_wikidata_id,
                                                                  p = "P21",
-                                                                 only_first = TRUE)) %>% 
+                                                                 only_first = TRUE,
+                                                                 preferred = TRUE)) %>% 
   
   
   mutate(country_medal_wikidata_id = tw_get_property_same_length(id = delegation_wikidata_id,
                                                                  p = "P17",
-                                                                 only_first = TRUE),
+                                                                 only_first = TRUE, 
+                                                                 preferred = TRUE),
          event_sport = tw_get_label(event_sport_wikidata_id),
          event_part_of = tw_get_label(event_part_of_wikidata_id),
          place_of_birth = tw_get_label(place_of_birth_wikidata_id),
          place_of_birth_located_in_wikidata_id = tw_get_property_same_length(id = place_of_birth_wikidata_id,
                                                                              p = "P131",
-                                                                             only_first = TRUE),
+                                                                             only_first = TRUE,
+                                                                             preferred = TRUE),
          place_of_birth_coordinates = tw_get_property_same_length(id = place_of_birth_wikidata_id,
                                                                   p = "P625",
-                                                                  only_first = TRUE),
+                                                                  only_first = TRUE,
+                                                                  preferred = TRUE),
          date_of_birth = stringr::str_extract(string = date_of_birth,
                                               pattern = "[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}") %>% 
            as.Date(),
@@ -588,7 +596,7 @@ all_medalists_with_wd_details_df <- all_medalists_wd_df %>%
   mutate(country_medal = tw_get_label(country_medal_wikidata_id),
          place_of_birth_located_in = tw_get_label(place_of_birth_located_in_wikidata_id))
 
- 
+
 ```
 
 Now, life's not perfect, and so isn't Wikidata. Some athletes do not have a complete file on them on Wikidata, so we may miss some places of birth, for example. Also, in order to reduce complexity of the output, I have limited retrieval of some properties to the first result. For example, Wikidata knows that a place is located within more than one "administrative territorial entity" (or was at different points in time), but I just kept the first result to keep the data in tabular format and reduce complexity.
@@ -614,7 +622,7 @@ all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>%
                        nuts1_id = NUTS_ID,
                        nuts1_name = NAME_LATN),
     by = "medalist_wikidata_id") %>% 
-    dplyr::left_join(
+  dplyr::left_join(
     all_medalists_with_wd_details_df %>% 
       dplyr::filter(is.na(lon)==FALSE) %>% 
       dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
@@ -626,7 +634,7 @@ all_medalists_wd_nuts_df <- all_medalists_with_wd_details_df %>%
                        nuts2_id = NUTS_ID,
                        nuts2_name = NAME_LATN),
     by = "medalist_wikidata_id") %>% 
-    dplyr::left_join(
+  dplyr::left_join(
     all_medalists_with_wd_details_df %>% 
       dplyr::filter(is.na(lon)==FALSE) %>% 
       dplyr::distinct(medalist_wikidata_id, .keep_all = TRUE) %>% 
@@ -656,20 +664,20 @@ library("eurostat")
 fs::dir_create("eurostat")
 
 population_by_nuts2_2020_file <- fs::path("eurostat",
-                                   "population_by_nuts2_2020.csv")
+                                          "population_by_nuts2_2020.csv")
 
 if (fs::file_exists(population_by_nuts2_2020_file)==FALSE) {
-eurostat::get_eurostat(id = "tgs00096", filters = list(age = "TOTAL",
-                                                       sex = "T")) %>% 
-  dplyr::arrange(geo, dplyr::desc(time)) %>% 
-  dplyr::filter(is.na(values)==FALSE) %>% 
+  eurostat::get_eurostat(id = "tgs00096", filters = list(age = "TOTAL",
+                                                         sex = "T")) %>% 
+    dplyr::arrange(geo, dplyr::desc(time)) %>% 
+    dplyr::filter(is.na(values)==FALSE) %>% 
     dplyr::group_by(geo) %>% 
     dplyr::slice(1) %>% 
     dplyr::ungroup() %>% 
-  tidyr::drop_na() %>% 
-  dplyr::transmute(nuts2_id = geo, nuts2_population = values) %>% 
-  dplyr::filter(nuts2_population!=0) %>% 
-  readr::write_csv(population_by_nuts2_2020_file)
+    tidyr::drop_na() %>% 
+    dplyr::transmute(nuts2_id = geo, nuts2_population = values) %>% 
+    dplyr::filter(nuts2_population!=0) %>% 
+    readr::write_csv(population_by_nuts2_2020_file)
 }
 
 population_by_nuts2 <- readr::read_csv(file = population_by_nuts2_2020_file, show_col_types = FALSE)
@@ -677,14 +685,14 @@ population_by_nuts2 <- readr::read_csv(file = population_by_nuts2_2020_file, sho
 
 
 population_by_nuts3_2020_file <- fs::path("eurostat",
-                                   "population_by_nuts3_2020.csv")
+                                          "population_by_nuts3_2020.csv")
 
 if (fs::file_exists(population_by_nuts3_2020_file)==FALSE) {
-eurostat::get_eurostat(id = "demo_r_pjanaggr3",
-                       filters = list(age = "TOTAL",
-                                      sex = "T")) %>% 
-      dplyr::arrange(geo, dplyr::desc(time)) %>% 
-  dplyr::filter(is.na(values)==FALSE) %>% 
+  eurostat::get_eurostat(id = "demo_r_pjanaggr3",
+                         filters = list(age = "TOTAL",
+                                        sex = "T")) %>% 
+    dplyr::arrange(geo, dplyr::desc(time)) %>% 
+    dplyr::filter(is.na(values)==FALSE) %>% 
     dplyr::group_by(geo) %>% 
     dplyr::slice(1) %>% 
     dplyr::ungroup() %>% 
@@ -697,44 +705,44 @@ eurostat::get_eurostat(id = "demo_r_pjanaggr3",
 
 population_by_nuts3 <- readr::read_csv(file = population_by_nuts3_2020_file, show_col_types = FALSE)
 
- 
+
 if (fs::file_exists(fs::path("eurostat",
-                                   "gdp_by_nuts3_2019.csv"))==FALSE) {
+                             "gdp_by_nuts3_2019.csv"))==FALSE) {
   
-gdp_by_nuts_df <- eurostat::get_eurostat(id = "nama_10r_3gdp",
-                       filters = list(unit = "MIO_EUR"))  %>%
-      dplyr::arrange(geo, dplyr::desc(time)) %>% 
-  dplyr::filter(is.na(values)==FALSE) %>% 
+  gdp_by_nuts_df <- eurostat::get_eurostat(id = "nama_10r_3gdp",
+                                           filters = list(unit = "MIO_EUR"))  %>%
+    dplyr::arrange(geo, dplyr::desc(time)) %>% 
+    dplyr::filter(is.na(values)==FALSE) %>% 
     dplyr::group_by(geo) %>% 
     dplyr::slice(1) %>% 
     dplyr::ungroup() %>% 
     tidyr::drop_na() %>% 
-  dplyr::filter(values !=0) 
-
-
-gdp_by_nuts_df %>% 
-  dplyr::transmute(nuts2_id = geo, nuts2_gdp = values) %>% 
-  dplyr::filter(nchar(nuts2_id)==4) %>% 
-  readr::write_csv(file = fs::path("eurostat",
-                                   "gdp_by_nuts2_2019.csv"))
-
-gdp_by_nuts_df %>% 
-  dplyr::transmute(nuts3_id = geo, nuts3_gdp = values) %>% 
-  dplyr::filter(nchar(nuts3_id)==5) %>%
-  readr::write_csv(file = fs::path("eurostat",
-                                   "gdp_by_nuts3_2019.csv"))
-
-
+    dplyr::filter(values !=0) 
+  
+  
+  gdp_by_nuts_df %>% 
+    dplyr::transmute(nuts2_id = geo, nuts2_gdp = values) %>% 
+    dplyr::filter(nchar(nuts2_id)==4) %>% 
+    readr::write_csv(file = fs::path("eurostat",
+                                     "gdp_by_nuts2_2019.csv"))
+  
+  gdp_by_nuts_df %>% 
+    dplyr::transmute(nuts3_id = geo, nuts3_gdp = values) %>% 
+    dplyr::filter(nchar(nuts3_id)==5) %>%
+    readr::write_csv(file = fs::path("eurostat",
+                                     "gdp_by_nuts3_2019.csv"))
+  
+  
 }
 
 gdp_by_nuts2_2019_df <- readr::read_csv(fs::path("eurostat",
                                                  "gdp_by_nuts2_2019.csv"),
-                                         show_col_types = FALSE)
+                                        show_col_types = FALSE)
 
 gdp_by_nuts3_2019_df <- readr::read_csv(fs::path("eurostat",
                                                  "gdp_by_nuts3_2019.csv"),
-                                         show_col_types = FALSE)
- 
+                                        show_col_types = FALSE)
+
 
 
 
@@ -750,11 +758,12 @@ all_medalists_wd_nuts_pop_df <- all_medalists_wd_nuts_df %>%
   dplyr::left_join(y = gdp_by_nuts2_2019_df, by = "nuts2_id") %>% 
   dplyr::left_join(y = gdp_by_nuts3_2019_df, by = "nuts3_id") %>% 
   dplyr::mutate(nuts0_id = stringr::str_extract(string = nuts2_id, pattern = "[A-Z]{2}")) %>% 
-  dplyr::mutate(nuts0_name = dplyr::case_when(nuts0_id == "EL" ~ "Greece", 
+  dplyr::mutate(nuts0_name = dplyr::case_when(is.na(nuts0_id) ~ as.character(NA),
+                                              nuts0_id == "EL" ~ "Greece", 
                                               nuts0_id == "UK" ~ "United Kingdom", 
                                               TRUE ~ countrycode::countrycode(sourcevar = nuts0_id,
-                                                      origin = "iso2c",
-                                                      destination = "country.name"))) %>% 
+                                                                              origin = "iso2c",
+                                                                              destination = "country.name"))) %>% 
   
   dplyr::select(event_link, 
                 event_wikidata_id,
@@ -843,9 +852,9 @@ all_medalists_wd_nuts_pop_df %>%
   dplyr::filter(is.na(nuts2_name)==FALSE) %>% 
   dplyr::group_by(nuts2_name) %>% 
   dplyr::count(name = "medals", sort = TRUE) %>% 
-dplyr::ungroup() %>% 
+  dplyr::ungroup() %>% 
   dplyr::left_join(y = all_medalists_wd_nuts_pop_df %>% 
-  dplyr::distinct(nuts2_id, nuts2_name, nuts2_population, nuts0_name), by = "nuts2_name") %>% 
+                     dplyr::distinct(nuts2_id, nuts2_name, nuts2_population, nuts0_name), by = "nuts2_name") %>% 
   dplyr::mutate(medals_per_million_residents = 1e06/(nuts2_population/medals)) %>% 
   dplyr::arrange(dplyr::desc(medals_per_million_residents)) %>% 
   dplyr::transmute(nuts2_id, 
@@ -892,31 +901,31 @@ all_medalists_df <- readr::read_csv("medalists_all.csv", show_col_types = FALSE)
 all_medalists_ll <- all_medalists_df  %>% 
   dplyr::select(lat, lon, medal, medalist_wikidata_id, medalist_name, medalist_link, event_part_of, delegation_name, place_of_birth
                 #, img_filename
-                ) %>% 
+  ) %>% 
   dplyr::mutate(medal_icon_link = dplyr::case_when(medal == "gold" ~ "https://upload.wikimedia.org/wikipedia/commons/4/4f/Gold_medal_olympic.svg",
                                                    medal == "silver" ~ "https://upload.wikimedia.org/wikipedia/commons/6/67/Silver_medal_olympic.svg",
                                                    medal == "bronze" ~ "https://upload.wikimedia.org/wikipedia/commons/f/f9/Bronze_medal_olympic.svg")) %>% 
   dplyr::group_by(medalist_wikidata_id) %>% 
   dplyr::mutate(medal = stringr::str_c(medal,collapse = ", "), event_part_of = stringr::str_c(unique(event_part_of), collapse = ", ")) %>% 
   dplyr::mutate(popup_content = stringr::str_c(
-    "<big><b><a href='https://en.wikipedia.org", medalist_link, "'>", medalist_name, "</a></b><br />",
+    "<big><b><a href='", medalist_link, "' target='_blank'>", medalist_name, "</a></b><br />",
     "Born in ", place_of_birth,"<br />",
     "Won ", medal, " medal in ", event_part_of, " for ", stringr::str_remove(string = delegation_name, pattern = " at the 2020 Summer Olympics"), "</big>"
     #,
-#    "<a href='https://en.wikipedia.org", medalist_link, "'>", "<img src='", "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/", img_filename,  "&width=120'></a>"
+    #    "<a href='https://en.wikipedia.org", medalist_link, "'>", "<img src='", "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/", img_filename,  "&width=120'></a>"
     
-    )) %>% 
+  )) %>% 
   dplyr::ungroup() %>% 
   dplyr::group_by(lat, lon) %>% 
   dplyr::add_count(name = "n_born_same_place") %>% 
   dplyr::mutate(lat = dplyr::if_else(condition = n_born_same_place>1,
-                               true = jitter(x = lat, amount = 0.01),
-                               false = lat,
-                               missing = as.numeric(NA))) %>% 
-    dplyr::mutate(lon = dplyr::if_else(condition = n_born_same_place>1,
-                               true = jitter(x = lon, amount = 0.01),
-                               false = lon,
-                               missing = as.numeric(NA)))
+                                     true = jitter(x = lat, amount = 0.01),
+                                     false = lat,
+                                     missing = as.numeric(NA))) %>% 
+  dplyr::mutate(lon = dplyr::if_else(condition = n_born_same_place>1,
+                                     true = jitter(x = lon, amount = 0.01),
+                                     false = lon,
+                                     missing = as.numeric(NA)))
 
 # remove the following line if you're running it on your own:
 # <script defer data-domain=\"edjnet.github.io\" src=\"https://plausible.europeandatajournalism.eu/js/plausible.js\"></script>
@@ -969,8 +978,8 @@ At last update, place of birth is present for `r place_of_birth_table$share_pres
 ```{r}
 place_of_birth_table %>% 
   knitr::kable()
-  
-  
+
+
 ```
 
 
